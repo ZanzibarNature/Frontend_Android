@@ -8,7 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.kawatrainingcenter.zanzibarnature.ui.pages.about.AboutPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.ContributePage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.dashboard.DashboardPage
-import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.ExploreListPage
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore_list.ExploreListPage
 
 @Composable
 fun AppNavigation() {

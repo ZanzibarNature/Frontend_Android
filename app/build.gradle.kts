@@ -1,5 +1,7 @@
 plugins {
+    kotlin("kapt")
     id("com.android.application")
+    id("com.google.dagger.hilt.android")
     id("org.jetbrains.kotlin.android")
 }
 
@@ -30,11 +32,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -47,13 +49,28 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
 
+    //Async Image
+    implementation("io.coil-kt:coil-compose:2.5.0")
+
     //navigation
     implementation("androidx.navigation:navigation-compose:2.7.5")
     implementation("androidx.compose.material:material:1.5.4")
+
+    //dagger/hilt
+    implementation("com.google.dagger:hilt-android:2.46")
+    implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
+    kapt("com.google.dagger:hilt-compiler:2.46")
+
+    //paging
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("androidx.paging:paging-compose:3.2.1")
 
     //initial
     implementation("androidx.core:core-ktx:1.9.0")
