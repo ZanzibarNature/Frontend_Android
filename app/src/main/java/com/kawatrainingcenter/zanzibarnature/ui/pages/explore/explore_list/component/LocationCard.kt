@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.ui.pages.explore_list.component
+package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -54,7 +55,7 @@ fun LocationCard(
                     style = TextStyle(
                         fontSize = 16.sp,
                         fontWeight = FontWeight(700),
-                        color = Color(0xFF000000),
+                        color = MaterialTheme.colorScheme.onBackground,
                         )
                 )
 
@@ -66,7 +67,7 @@ fun LocationCard(
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight(400),
-                        color = Color(0xFF000000),
+                        color = MaterialTheme.colorScheme.onBackground,
                         )
                 )
             }

@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.ui.pages.explore_list.component
+package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding

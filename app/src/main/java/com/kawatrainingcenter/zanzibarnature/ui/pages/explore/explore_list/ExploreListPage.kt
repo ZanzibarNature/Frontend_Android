@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.ui.pages.explore_list
+package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
-import com.kawatrainingcenter.zanzibarnature.ui.pages.explore_list.component.LocationList
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.LocationList
 
 @Composable
 fun ExploreListPage(

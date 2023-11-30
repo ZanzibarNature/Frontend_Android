@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.ui.pages.location_detail.component
+package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.component
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
