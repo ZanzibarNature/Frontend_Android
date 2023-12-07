@@ -3,7 +3,7 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import com.kawatrainingcenter.zanzibarnature.data.model.Location
+import com.kawatrainingcenter.zanzibarnature.data.MockAPI.model.Location
 
 
 @HiltViewModel

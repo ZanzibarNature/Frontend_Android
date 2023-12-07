@@ -13,9 +13,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 
-@Preview
 @Composable
-fun ChooseAmount() {
+fun ChooseAmount(
+    enteredAmount: Int,
+    onChange: (Int) -> Unit
+) {
     var activeState by remember { mutableIntStateOf(0) }
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -39,9 +41,12 @@ fun ChooseAmount() {
                 }
             }
 
-            EnterAmountBtn(id = 999, amount = 0, isActive = activeState == 999) {
-                activeState = 999
-            }
+            EnterAmountBtn(
+                amount = enteredAmount,
+                isActive = activeState == 999,
+                onClick = { activeState = 999 },
+                onChange = { data -> onChange(data) }
+            )
         }
     }
 }

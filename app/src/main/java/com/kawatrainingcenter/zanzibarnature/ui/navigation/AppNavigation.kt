@@ -6,7 +6,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
 import com.kawatrainingcenter.zanzibarnature.ui.pages.about.AboutPage
-import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.ContributePage
+import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.CalculatorPage
+import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.ContributePage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.dashboard.DashboardPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.ExploreListPage
 
@@ -32,6 +33,9 @@ fun AppNavigation() {
         navigation(startDestination = "contribute_main", route = "contribute") {
             composable("contribute_main") {
                 ContributePage(navController = navController)
+            }
+            composable("calculator") {
+                CalculatorPage(navController = navController)
             }
         }
 

@@ -20,7 +20,8 @@ private val LightColorScheme = lightColorScheme(
     onBackground = light_on_background,
     onPrimary = light_on_primary,
     secondary = light_secondary,
-    tertiary = light_tertiary
+    tertiary = light_tertiary,
+    onTertiary = light_on_tertiary
 )
 
 private val DarkColorScheme = darkColorScheme(
@@ -28,7 +29,8 @@ private val DarkColorScheme = darkColorScheme(
     onBackground = dark_on_background,
     onPrimary = dark_on_primary,
     secondary = dark_secondary,
-    tertiary = dark_tertiary
+    tertiary = dark_tertiary,
+    onTertiary = dark_on_tertiary
 )
 
 

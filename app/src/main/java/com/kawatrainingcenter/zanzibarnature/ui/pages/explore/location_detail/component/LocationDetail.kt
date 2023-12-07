@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
-import com.kawatrainingcenter.zanzibarnature.data.model.Location
+import com.kawatrainingcenter.zanzibarnature.data.MockAPI.model.Location
 
 @Preview(showSystemUi = true)
 @Composable

@@ -1,7 +1,11 @@
 package com.kawatrainingcenter.zanzibarnature.ui.components
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -19,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -83,8 +88,13 @@ fun AppScaffold(
                         Text(
                             text = title,
                             color = MaterialTheme.colorScheme.onPrimary,
-                            fontSize = 22.sp,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.SemiBold,
+                            style = TextStyle(
+                                fontWeight = FontWeight(700),
+                                color = MaterialTheme.colorScheme.onPrimary,
+                                textAlign = TextAlign.Center,
+                            )
                         )
                     },
                     actions = actions,
@@ -161,7 +171,7 @@ fun AppScaffoldTopBarNavigation(
         is NavigationType.Back -> {
             IconButton(navigation.onClick) {
                 Icon(
-                    painter = painterResource(R.drawable.baseline_arrow_back_ios_24),
+                    painter = painterResource(R.drawable.baseline_arrow_circle_left_24),
                     contentDescription = stringResource(R.string.navigate_back_description),
                     tint = MaterialTheme.colorScheme.onPrimary
                 )

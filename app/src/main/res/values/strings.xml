@@ -3,4 +3,9 @@
     <string name="label_explore">Explore</string>
     <string name="navigate_back_description">Navigate back</string>
     <string name="currency_symbol">€</string>
+    <string name="donate">Donate</string>
+    <string name="enter_amount">Enter Amount\n</string>
+    <string name="calculate_co2">Calculate by your flight’s CO2 emissions</string>
+    <string name="general_unknown_error">Unknown Error\n</string>
+    <string name="error_text">Something went wrong…\n</string>
 </resources>

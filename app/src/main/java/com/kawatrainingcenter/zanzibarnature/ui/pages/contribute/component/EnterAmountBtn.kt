@@ -1,16 +1,20 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -18,6 +22,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusDirection
@@ -37,52 +42,95 @@ import com.kawatrainingcenter.zanzibarnature.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EnterAmountBtn(
-    id: Int,
-    amount: Int? = 0,
+    amount: Int,
     isActive: Boolean = false,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    onChange: (Int) -> Unit
 ) {
     var text by remember { mutableStateOf(amount.toString()) }
     val focusManager = LocalFocusManager.current
 
-    //Todo make button and add two textfields -> one readonly with currency symbol
-    TextField(
-        value = "${stringResource(R.string.currency_symbol)}$text",
-        onValueChange = {
-            text = it.filter{ number -> number.isDigit()}
-            onClick()
-        },
-        shape = RoundedCornerShape(5.dp),
-        singleLine = true,
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Number,
-            imeAction = ImeAction.Next
-        ),
-        keyboardActions = KeyboardActions(
-            onNext = { focusManager.moveFocus(FocusDirection.Down) }
-        ),
-        textStyle = TextStyle(
-            textAlign = TextAlign.Center,
-            fontSize = 18.sp,
-            fontWeight = if (isActive) FontWeight(600) else FontWeight.Normal
-        ),
-        modifier = Modifier
-            .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp)
-            .border(
-                width = if (isActive) 2.5.dp else 1.5.dp,
-                color = if (isActive) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onBackground,
-                shape = RoundedCornerShape(size = 5.dp)
-            )
-            .width(170.dp)
-            .height(75.dp)
-            .shadow(
-                elevation = if (isActive) 0.dp else 3.dp,
-                spotColor = Color(0x4D000000),
-                ambientColor = Color(0x4D000000)
+    if (isActive) {
+        TextField(
+            value = if (text == "0") "" else text,
+            onValueChange = {
+                text = it.filter { number -> number.isDigit() }
+                if (text != "") onChange(text.toInt()) else onChange(0)
+                onClick()
+            },
+            singleLine = true,
+            keyboardOptions = KeyboardOptions(
+                keyboardType = KeyboardType.Number,
+                imeAction = ImeAction.Next
             ),
-        colors = TextFieldDefaults.textFieldColors(
-            containerColor = MaterialTheme.colorScheme.background,
-            textColor = MaterialTheme.colorScheme.onBackground
+            keyboardActions = KeyboardActions(
+                onNext = { focusManager.moveFocus(FocusDirection.Down) }
+            ),
+            textStyle = TextStyle(
+                textAlign = TextAlign.Center,
+                fontSize = 18.sp,
+                fontWeight = if (isActive) FontWeight(600) else FontWeight.Normal
+            ),
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = MaterialTheme.colorScheme.background,
+                textColor = MaterialTheme.colorScheme.onBackground
+            ),
+            modifier = Modifier
+                .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp)
+                .border(
+                    width = if (isActive) 2.5.dp else 1.5.dp,
+                    color = if (isActive) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onBackground,
+                    shape = RoundedCornerShape(size = 5.dp)
+                )
+                .width(170.dp)
+                .height(75.dp)
+                .shadow(
+                    elevation = if (isActive) 0.dp else 3.dp,
+                    spotColor = Color(0x4D000000),
+                    ambientColor = Color(0x4D000000)
+                )
         )
-    )
+    } else {
+        Button(
+            onClick = { onClick() },
+            shape = RoundedCornerShape(5.dp),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = MaterialTheme.colorScheme.background,
+                contentColor = MaterialTheme.colorScheme.onBackground
+            ),
+            modifier = Modifier
+                .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp)
+                .border(
+                    width = 1.5.dp,
+                    color = MaterialTheme.colorScheme.onBackground,
+                    shape = RoundedCornerShape(size = 5.dp)
+                )
+                .width(170.dp)
+                .height(75.dp)
+                .shadow(
+                    elevation = 3.dp,
+                    spotColor = Color(0x4D000000),
+                    ambientColor = Color(0x4D000000)
+                ),
+        ) {
+            Row(
+                modifier = Modifier.fillMaxSize(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Text(
+                    text =
+                    if (text == "" || text == "0") stringResource(R.string.enter_amount)
+                    else "${stringResource(R.string.currency_symbol)}$text",
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight(400),
+                    style = TextStyle(
+                        color = MaterialTheme.colorScheme.onBackground,
+                        textAlign = TextAlign.Center,
+                    )
+                )
+            }
+
+        }
+    }
 }
