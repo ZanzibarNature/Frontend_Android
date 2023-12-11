@@ -69,7 +69,7 @@ fun EnterAmountBtn(
             textStyle = TextStyle(
                 textAlign = TextAlign.Center,
                 fontSize = 18.sp,
-                fontWeight = if (isActive) FontWeight(600) else FontWeight.Normal
+                fontWeight = FontWeight(600)
             ),
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = MaterialTheme.colorScheme.background,
@@ -78,14 +78,14 @@ fun EnterAmountBtn(
             modifier = Modifier
                 .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp)
                 .border(
-                    width = if (isActive) 2.5.dp else 1.5.dp,
-                    color = if (isActive) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onBackground,
+                    width = 2.5.dp,
+                    color = MaterialTheme.colorScheme.tertiary,
                     shape = RoundedCornerShape(size = 5.dp)
                 )
                 .width(170.dp)
                 .height(75.dp)
                 .shadow(
-                    elevation = if (isActive) 0.dp else 3.dp,
+                    elevation = 0.dp,
                     spotColor = Color(0x4D000000),
                     ambientColor = Color(0x4D000000)
                 )
