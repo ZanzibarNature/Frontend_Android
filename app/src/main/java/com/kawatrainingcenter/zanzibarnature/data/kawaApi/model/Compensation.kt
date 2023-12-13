@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.data.MockAPI.model
+package com.kawatrainingcenter.zanzibarnature.data.kawaApi.model
 
 import java.util.Currency
 

@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.data.MockAPI.extensions
+package com.kawatrainingcenter.zanzibarnature.data.kawaApi.extensions
 
 fun <T> Result<Result<T>>.flatten(): Result<T> {
     return runCatching {

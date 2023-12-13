@@ -22,6 +22,7 @@ import com.kawatrainingcenter.zanzibarnature.ui.components.button.DefaultBtn
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.navigation.NavigationType
+import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.component.FlightForm
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.CompensationState
 
 @Composable
@@ -30,6 +31,7 @@ fun CalculatorPage(
     viewModel: CalculatorViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
+    val airports by viewModel.airportState.collectAsState()
 
     AppScaffold(
         title = "Contribute",
@@ -44,21 +46,28 @@ fun CalculatorPage(
                 color = MaterialTheme.colorScheme.onBackground,
                 modifier = Modifier.padding(16.dp)
             )
-            Spacer(modifier = Modifier.padding(20.dp))
-            when (val state = state) {
-                CompensationState.Loading -> LoadingIndicator()
 
-                is CompensationState.Success -> {
-                    Text(
-                        text = state.compensation.total.toString(),
-                        modifier = Modifier.padding(it)
-                    )
-                }
 
-                is CompensationState.Error -> ErrorMessage(message = state.message)
-            }
-            Spacer(modifier = Modifier.padding(100.dp))
-            DefaultBtn(onClick = { /*TODO*/ }, text = stringResource(R.string.donate))
+            FlightForm(
+                airports = airports,
+                filterAirports = { string -> viewModel.filterAirports(string) }
+            )
+
+//            Spacer(modifier = Modifier.padding(20.dp))
+//            when (val state = state) {
+//                CompensationState.Loading -> LoadingIndicator()
+//
+//                is CompensationState.Success -> {
+//                    Text(
+//                        text = state.compensation.total.toString(),
+//                        modifier = Modifier.padding(it)
+//                    )
+//                }
+//
+//                is CompensationState.Error -> ErrorMessage(message = state.message)
+//            }
+//            Spacer(modifier = Modifier.padding(100.dp))
+//            DefaultBtn(onClick = { /*TODO*/ }, text = stringResource(R.string.donate))
         }
     }
 }

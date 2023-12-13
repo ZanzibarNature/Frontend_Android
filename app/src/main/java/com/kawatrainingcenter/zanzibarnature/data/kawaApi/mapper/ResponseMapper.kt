@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.data.MockAPI.mapper
+package com.kawatrainingcenter.zanzibarnature.data.kawaApi.mapper
 
 import android.util.Log
 import retrofit2.Response

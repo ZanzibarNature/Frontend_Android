@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.data.MockAPI.entity
+package com.kawatrainingcenter.zanzibarnature.data.kawaApi.entity
 
 data class CompensationEntity(
     val co2FootprintInKG: Double,

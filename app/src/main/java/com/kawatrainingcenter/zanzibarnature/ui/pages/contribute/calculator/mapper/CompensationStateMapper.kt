@@ -1,6 +1,6 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.mapper
 
-import com.kawatrainingcenter.zanzibarnature.data.MockAPI.model.Compensation
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Compensation
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.CompensationState
 import javax.inject.Inject
 

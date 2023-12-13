@@ -1,7 +1,7 @@
-package com.kawatrainingcenter.zanzibarnature.data.MockAPI.mapper
+package com.kawatrainingcenter.zanzibarnature.data.kawaApi.mapper
 
-import com.kawatrainingcenter.zanzibarnature.data.MockAPI.entity.CompensationEntity
-import com.kawatrainingcenter.zanzibarnature.data.MockAPI.model.Compensation
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.entity.CompensationEntity
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Compensation
 import javax.inject.Inject
 
 class CompensationMapper @Inject constructor() {

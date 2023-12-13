@@ -1,6 +1,6 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model
 
-import com.kawatrainingcenter.zanzibarnature.data.MockAPI.model.Compensation
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Compensation
 
 sealed class CompensationState {
 

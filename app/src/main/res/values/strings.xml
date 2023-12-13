@@ -8,4 +8,7 @@
     <string name="calculate_co2">Calculate by your flight’s CO2 emissions</string>
     <string name="general_unknown_error">Unknown Error\n</string>
     <string name="error_text">Something went wrong…\n</string>
+    <string name="airport">airport</string>
+    <string name="Choose">Choose</string>
+    <string name="amount_of_tickets">Amount of tickets</string>
 </resources>

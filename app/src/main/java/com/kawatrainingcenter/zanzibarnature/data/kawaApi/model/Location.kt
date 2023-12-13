@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.data.MockAPI.model
+package com.kawatrainingcenter.zanzibarnature.data.kawaApi.model
 
 data class Location(
     val id: Int,
