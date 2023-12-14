@@ -11,16 +11,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.kawatrainingcenter.zanzibarnature.R
 
 @Composable
 fun ChooseAmount(
+    compensation: Int = 0,
     enteredAmount: Int,
     onChange: (Int) -> Unit
 ) {
     var activeState by remember { mutableIntStateOf(0) }
 
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
+        if(compensation != 0) {
+            BigAmountBtn(label = "${stringResource(R.string.currency_symbol)}$compensation ${stringResource(R.string.calculated)}", isActive = activeState == compensation) {
+                activeState = compensation
+            }
+        }
+
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.Center

@@ -5,10 +5,10 @@ import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Compensation
 import javax.inject.Inject
 
 class CompensationMapper @Inject constructor() {
-    fun map(entity: CompensationEntity): Result<Compensation> {
+    fun map(entity: CompensationEntity, tickets: Int): Result<Compensation> {
         return runCatching {
             Compensation (
-                total = entity.totalCost,
+                total = entity.totalCost * tickets,
                 currency = entity.currency
             )
         }

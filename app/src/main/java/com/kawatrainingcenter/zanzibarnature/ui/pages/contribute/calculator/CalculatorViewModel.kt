@@ -9,7 +9,6 @@ import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.repository.KawaRepository
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.mapper.CompensationStateMapper
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airport
-import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airports
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.CompensationState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -26,7 +25,7 @@ class CalculatorViewModel @Inject constructor(
     private val compensationStateMapper: CompensationStateMapper
 ) : ViewModel() {
 
-    private val mutableState = MutableStateFlow<CompensationState>(CompensationState.Loading)
+    private val mutableState = MutableStateFlow<CompensationState>(CompensationState.NotClicked)
     val state: StateFlow<CompensationState> = mutableState
 
     private val mutableAirport = MutableStateFlow<List<Airport>?>(null)
@@ -37,20 +36,23 @@ class CalculatorViewModel @Inject constructor(
     private val airportsJson = getJsonDataFromAsset(context, "airports.json")
     private val airports: List<Airport> = gson.fromJson(airportsJson, airportType)
 
-    init {
-        getCompensation()
+    private val mutableEntered = MutableStateFlow(0)
+    val entered: StateFlow<Int> = mutableEntered
+
+    fun updateEntered(amount: Int) {
+        mutableEntered.tryEmit(amount)
     }
 
     fun filterAirports(text: String) {
         mutableAirport.value = airports.filter { it.name?.contains(text, ignoreCase = true) == true }
     }
 
-    private fun getCompensation() {
-        viewModelScope.launch { fetchCompensation() }
+    fun getCompensation(from: Airport, to: Airport, tickets: Int) {
+        viewModelScope.launch { fetchCompensation(from = from, to = to, tickets) }
     }
 
-    private suspend fun fetchCompensation() {
-        kawaRepository.getCompensation()
+    private suspend fun fetchCompensation(from: Airport, to: Airport, tickets: Int) {
+        kawaRepository.getCompensation(from = from, to = to, currency = "EUR", tickets)
             .onSuccess { mutableState.value = compensationStateMapper.map(it) }
             .getOrElse {
                 mutableState.value = CompensationState.Error(

@@ -12,6 +12,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
@@ -24,21 +25,26 @@ import androidx.compose.ui.unit.sp
 @Composable
 fun DefaultBtn(
     onClick: () -> Unit,
-    text: String
+    text: String,
+    enabled: Boolean = true
 ) {
     Button(
         onClick = onClick,
+        enabled = enabled,
+        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary,),
+        shape = RoundedCornerShape(20.dp),
         modifier = Modifier
             .padding(12.dp)
             .shadow(
-                elevation = 4.dp,
+                elevation = 6.dp,
                 spotColor = Color(0x40000000),
-                ambientColor = Color(0x40000000)
+                ambientColor = Color(0x40000000),
+                shape = RoundedCornerShape(20.dp)
             )
             .fillMaxWidth()
-            .height(40.dp),
-        shape = RoundedCornerShape(20.dp),
-        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary)
+            .height(40.dp)
+
+,
     ) {
         Text(
             text = text,

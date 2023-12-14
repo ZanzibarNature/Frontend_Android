@@ -10,5 +10,7 @@ sealed class CompensationState {
 
     object Loading: CompensationState()
 
+    object NotClicked: CompensationState()
+
     data class Error(val message: String): CompensationState()
 }

@@ -11,4 +11,8 @@
     <string name="airport">airport</string>
     <string name="Choose">Choose</string>
     <string name="amount_of_tickets">Amount of tickets</string>
+    <string name="calculate">Calculate</string>
+    <string name="co2_calculator">CO₂ Calculator</string>
+    <string name="airplane_icon">Icon of airplane</string>
+    <string name="calculated">calculated by CO₂ emissions</string>
 </resources>

@@ -1,6 +1,7 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.component
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,6 +14,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.text.TextStyle
@@ -24,7 +26,8 @@ import androidx.compose.ui.unit.sp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun NumberField(
-    label: String
+    label: String,
+    onChange: (Int) -> Unit
 ) {
     var number by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
@@ -35,6 +38,7 @@ fun NumberField(
             value = if (number == "0") "" else number,
             onValueChange = {
                 number = it.filter { num -> num.isDigit() }
+                if(number != "") onChange( number.toInt() ) else onChange(0)
             },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
@@ -51,7 +55,8 @@ fun NumberField(
             colors = TextFieldDefaults.textFieldColors(
                 containerColor = MaterialTheme.colorScheme.onPrimary,
                 textColor = MaterialTheme.colorScheme.onTertiary
-            )
+            ),
+            modifier = Modifier.fillMaxWidth()
         )
     }
 

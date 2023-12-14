@@ -3,6 +3,7 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.component
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -23,8 +24,9 @@ import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
 
 @Composable
-fun AmountButton(
-    amount: Int,
+fun BigAmountBtn(
+    id: Int = 0,
+    label: String,
     isActive: Boolean,
     onClick: () -> Unit
 ) {
@@ -38,7 +40,7 @@ fun AmountButton(
                 color = if (isActive) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onBackground,
                 shape = RoundedCornerShape(size = 5.dp)
             )
-            .width(75.dp)
+            .fillMaxWidth(0.965f)
             .height(75.dp)
             .background(
                 color = MaterialTheme.colorScheme.background,
@@ -54,11 +56,10 @@ fun AmountButton(
     ) {
         Text(
             modifier = Modifier.align(Alignment.CenterVertically),
-            text = "${stringResource(R.string.currency_symbol)}${amount.toString()}",
-            fontSize = 18.sp,
+            text = label,
+            fontSize = 17.sp,
             color = MaterialTheme.colorScheme.onBackground,
             fontWeight = if(isActive) FontWeight(600) else FontWeight.Normal
         )
     }
-
 }

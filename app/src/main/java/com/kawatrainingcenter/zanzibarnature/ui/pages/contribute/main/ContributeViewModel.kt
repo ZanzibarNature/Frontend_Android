@@ -11,7 +11,7 @@ class ContributeViewModel @Inject constructor(
 
 ) : ViewModel() {
 
-    private val mutableEntered = MutableStateFlow<Int>(0)
+    private val mutableEntered = MutableStateFlow(0)
     val entered: StateFlow<Int> = mutableEntered
 
 

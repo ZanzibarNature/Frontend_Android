@@ -41,7 +41,8 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.mode
 fun FlightDropdown(
     airports: List<Airport>?,
     type: String,
-    onChange: (String) -> Unit
+    onChange: (String) -> Unit,
+    onClick: (Airport) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
     var selectedAirport by remember { mutableStateOf<Airport?>(null) }
@@ -49,7 +50,9 @@ fun FlightDropdown(
     val focusManager = LocalFocusManager.current
 
     Column {
-        Text(text = "${type.capitalize()} ${stringResource(R.string.airport)}")
+        Text(
+            text = "${type.capitalize()} ${stringResource(R.string.airport)}",
+        )
         ExposedDropdownMenuBox(
             expanded = expanded,
             onExpandedChange = {
@@ -65,8 +68,8 @@ fun FlightDropdown(
                 value = text,
                 onValueChange = {
                     text = it
-                    expanded = text.length > 2
                     if (text.length > 2) onChange(it)
+                    expanded = text.length > 2 && airports?.isNotEmpty() == true
                 },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
@@ -99,15 +102,19 @@ fun FlightDropdown(
                     DropdownMenuItem(
                         text = {
                             Text(
-                                text = "${airport.name.toString()} (${airport.iata})",
-                                color = MaterialTheme.colorScheme.onTertiary
+                                text = airport.name.toString(),
+                                color = MaterialTheme.colorScheme.onTertiary,
+                                modifier = Modifier.fillMaxWidth()
                             )
                         },
                         onClick = {
                             selectedAirport = airport
-                            text = "${airport.name.toString()} (${airport.iata})"
+                            text = airport.name.toString()
                             expanded = false
-                        })
+                            onClick(airport)
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    )
                 }
             }
         }

@@ -76,13 +76,13 @@ fun EnterAmountBtn(
                 textColor = MaterialTheme.colorScheme.onBackground
             ),
             modifier = Modifier
-                .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp)
+                .padding(start = 12.dp, end = 12.dp, top = 10.dp, bottom = 10.dp)
                 .border(
                     width = 2.5.dp,
                     color = MaterialTheme.colorScheme.tertiary,
                     shape = RoundedCornerShape(size = 5.dp)
                 )
-                .width(170.dp)
+                .width(175.dp)
                 .height(75.dp)
                 .shadow(
                     elevation = 0.dp,
@@ -99,13 +99,13 @@ fun EnterAmountBtn(
                 contentColor = MaterialTheme.colorScheme.onBackground
             ),
             modifier = Modifier
-                .padding(start = 10.dp, end = 10.dp, top = 8.dp, bottom = 8.dp)
+                .padding(start = 12.dp, end = 12.dp, top = 10.dp, bottom = 10.dp)
                 .border(
                     width = 1.5.dp,
                     color = MaterialTheme.colorScheme.onBackground,
                     shape = RoundedCornerShape(size = 5.dp)
                 )
-                .width(170.dp)
+                .width(175.dp)
                 .height(75.dp)
                 .shadow(
                     elevation = 3.dp,
@@ -122,7 +122,7 @@ fun EnterAmountBtn(
                     text =
                     if (text == "" || text == "0") stringResource(R.string.enter_amount)
                     else "${stringResource(R.string.currency_symbol)}$text",
-                    fontSize = 18.sp,
+                    fontSize = 17.sp,
                     fontWeight = FontWeight(400),
                     style = TextStyle(
                         color = MaterialTheme.colorScheme.onBackground,
