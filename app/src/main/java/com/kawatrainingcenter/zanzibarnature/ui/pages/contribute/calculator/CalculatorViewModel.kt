@@ -48,6 +48,7 @@ class CalculatorViewModel @Inject constructor(
     }
 
     fun getCompensation(from: Airport, to: Airport, tickets: Int) {
+        mutableState.value = CompensationState.Loading
         viewModelScope.launch { fetchCompensation(from = from, to = to, tickets) }
     }
 

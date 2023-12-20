@@ -15,4 +15,6 @@
     <string name="co2_calculator">CO₂ Calculator</string>
     <string name="airplane_icon">Icon of airplane</string>
     <string name="calculated">calculated by CO₂ emissions</string>
+    <string name="show_in_google_maps">Show route on Google Maps</string>
+    <string name="error_message">Unknown Error\n</string>
 </resources>

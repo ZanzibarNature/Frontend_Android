@@ -20,6 +20,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = light_on_background,
     onPrimary = light_on_primary,
     secondary = light_secondary,
+    onSecondary = light_on_secondary,
     tertiary = light_tertiary,
     onTertiary = light_on_tertiary,
 

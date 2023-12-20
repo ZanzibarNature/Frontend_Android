@@ -1,33 +1,48 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
+import com.kawatrainingcenter.zanzibarnature.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Locations
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.repository.KawaRepository
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsStateMapper
+import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 
 
 @HiltViewModel
-class ExploreListViewModel @Inject constructor() : ViewModel() {
-    val locations = listOf(
-        Location(
-            id = 1,
-            title = "Jozani-Chwaka Bay",
-            description = "The Jozani Chwaka Bay National Park is 50 km2 (19 sq mi). It is the only national park in Zanzibar.\n" +
-                    "\n" +
-                    "The Zanzibar red colobus is found in the park, a rain forest species (unlike the black-and-white colobus found in other regions of Africa) is only found in Zanzibar.",
-            kawa = null,
-            image = "https://lh5.googleusercontent.com/EPxKF-S8KuSb3YmyQSO1Fbk6Zm8VFYlwMNtpA-wNwl8YNilTYp7W2btwKY8QHBPbfnF75Nb7bBe3UPyl7HLIURmEDKEE3ZyLkgk_fWBoez6EvqLgY887uRYhlCPARiNa_urQ9-xJ",
-            icons = listOf("hiking", "photo", "monkey"),
-            location = "hier"
-        ), Location(
-            id = 2,
-            title = "Nungwi Beach",
-            description = "A very quiet beach on the outskirts of the island. Very beautiful place to enjoy the sunset.",
-            kawa = "Help to keep the beaches clean!\n" +
-                    "The Students from the Kawa Training Center often do beach clean-ups along this beach. If you want to support the Kawa Foundation in making Zanzibar a beautiful place again, feel free to contact us or make a donation.",
-            icons = listOf("hiking", "photo", "swim"),
-            image = "https://cdn-0.johnnyafrica.com/wp-content/uploads/2020/11/dsc00891.jpg",
-            location = "hier"
-        )
-    )
+class ExploreListViewModel @Inject constructor(
+    @ApplicationContext private val context: Context,
+    private val kawaRepository: KawaRepository,
+    private val locationsStateMapper: LocationsStateMapper
+) : ViewModel() {
+
+    //val locations: Locations = kawaRepository.getLocationsMock()
+
+    private val _locations = MutableStateFlow<LocationsState>(LocationsState.Loading)
+    val locations: StateFlow<LocationsState> = _locations
+
+    init {
+        fetchLocations()
+    }
+
+    private fun fetchLocations() {
+        _locations.value = LocationsState.Loading
+
+        kawaRepository.getLocations()
+            .onSuccess {  _locations.value = locationsStateMapper.map(it) }
+            .getOrElse {
+                _locations.value = LocationsState.Error(
+                    it.message ?: context.getString(R.string.error_message)
+                )
+            }
+    }
+    
+    
+    
 }

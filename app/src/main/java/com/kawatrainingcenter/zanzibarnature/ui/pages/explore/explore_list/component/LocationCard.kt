@@ -40,7 +40,7 @@ fun LocationCard(
     ) {
         Row {
             AsyncImage(
-                model = location.image,
+                model = location.images[0],
                 modifier = Modifier
                     .fillMaxHeight()
                     .width(140.dp),

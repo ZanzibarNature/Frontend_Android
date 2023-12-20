@@ -3,20 +3,37 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
+import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
+import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.LocationList
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
 
 @Composable
 fun ExploreListPage(
     viewModel: ExploreListViewModel = hiltViewModel(),
     navController: NavController
 ) {
+
+    val locations by viewModel.locations.collectAsState()
+
     AppScaffold(title = "Explore", navController = navController) {
         Box(modifier = Modifier.padding(it)) {
-           LocationList(locations = viewModel.locations)
+
+            when (val state = locations) {
+                LocationsState.Loading -> LoadingIndicator()
+
+                is LocationsState.Success -> {
+                    LocationList(locations = state.locations.locations)
+                }
+
+                is LocationsState.Error -> ErrorMessage(message = state.message)
+            }
         }
     }
 }
