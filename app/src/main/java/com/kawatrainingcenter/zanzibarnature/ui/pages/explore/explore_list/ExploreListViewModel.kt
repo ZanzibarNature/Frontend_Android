@@ -5,8 +5,6 @@ import androidx.lifecycle.ViewModel
 import com.kawatrainingcenter.zanzibarnature.R
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
-import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
-import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Locations
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.repository.KawaRepository
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsStateMapper

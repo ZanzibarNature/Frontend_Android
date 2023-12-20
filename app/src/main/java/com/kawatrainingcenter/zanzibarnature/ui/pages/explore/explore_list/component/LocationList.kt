@@ -10,13 +10,17 @@ import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 
 @Composable
 fun LocationList (
-    locations: List<Location>
+    locations: List<Location>,
+    onLocationClick: (Int) -> Unit
 ){
     Box {
         LazyColumn(modifier = Modifier.padding(bottom = 8.dp, top = 8.dp)) {
             items(locations.count()) {
                 val item = locations[it]
-                LocationCard(location = item)
+                LocationCard(
+                    location = item,
+                    onClick = { onLocationClick(item.id) }
+                )
             }
         }
     }

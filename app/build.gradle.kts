@@ -55,6 +55,8 @@ android {
 }
 
 dependencies {
+    //pager (used for image slider)
+    implementation("com.google.accompanist:accompanist-pager:0.23.1")
 
     //Gson (JSON parsing)
     implementation("com.google.code.gson:gson:2.10.1")

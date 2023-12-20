@@ -8,7 +8,7 @@ import javax.inject.Inject
 
 class LocationMapper @Inject constructor() {
 
-    private fun map(entity: LocationEntity): Result<Location> {
+    fun map(entity: LocationEntity): Result<Location> {
         return runCatching {
             Location(
                 id = entity.id,

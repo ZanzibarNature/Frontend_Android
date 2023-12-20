@@ -1,15 +1,28 @@
 package com.kawatrainingcenter.zanzibarnature.ui.navigation
 
+import androidx.compose.animation.AnimatedContentTransitionScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.core.EaseIn
+import androidx.compose.animation.core.EaseOut
+import androidx.compose.animation.core.LinearEasing
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.kawatrainingcenter.zanzibarnature.ui.pages.about.AboutPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.CalculatorPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.ContributePage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.dashboard.DashboardPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.ExploreListPage
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.LocationDetailPage
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.component.LocationDetail
 
 @Composable
 fun AppNavigation() {
@@ -17,14 +30,52 @@ fun AppNavigation() {
 
     NavHost(
         navController = navController,
-        startDestination = "explore"
+        startDestination = "explore",
+        enterTransition = { EnterTransition.None },
+        exitTransition = { ExitTransition.None }
     ) {
 
         navigation(startDestination = "explore_list", route = "explore") {
             composable("explore_list") {
-                ExploreListPage(navController = navController)
+                ExploreListPage(
+                    navController = navController,
+                    onLocationClick = { navController.navigate("location_detail/${it}") }
+                )
+            }
+
+            composable(
+                route = "location_detail/{location_id}",
+                arguments = listOf(
+                    navArgument("location_id") {type = NavType.IntType}
+                ),
+                enterTransition = {
+                    fadeIn(
+                        animationSpec = tween(
+                            300, easing = LinearEasing
+                        )
+                    ) + slideIntoContainer(
+                        animationSpec = tween(300, easing = EaseIn),
+                        towards = AnimatedContentTransitionScope.SlideDirection.Start
+                    )
+                },
+                exitTransition = {
+                    fadeOut(
+                        animationSpec = tween(
+                            300, easing = LinearEasing
+                        )
+                    ) + slideOutOfContainer(
+                        animationSpec = tween(300, easing = EaseOut),
+                        towards = AnimatedContentTransitionScope.SlideDirection.End
+                    )
+                }
+            ) {
+                LocationDetailPage(
+                    navController = navController
+                )
             }
         }
+
+
 
         composable("dashboard") {
             DashboardPage(navController = navController)

@@ -7,6 +7,7 @@ import com.kawatrainingcenter.zanzibarnature.data.kawaApi.mapper.CompensationMap
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.mapper.LocationMapper
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.mapper.ResponseMapper
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Compensation
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Locations
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airport
 import java.util.Currency
@@ -28,6 +29,11 @@ class KawaRepository @Inject constructor(
     fun getLocations(): Result<Locations> {
         return runCatching {mockData.getLocations()}
             .map(locationMapper::mapList).flatten()
+    }
+
+    fun getLocation(id: Int): Result<Location> {
+        return runCatching { mockData.getLocation(id = id)}
+            .map(locationMapper::map).flatten()
     }
 
 //    fun getLocationsMock(): Locations {

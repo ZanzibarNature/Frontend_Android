@@ -11,6 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -24,11 +25,14 @@ import coil.compose.AsyncImage
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LocationCard(
-    location: Location
+    location: Location,
+    onClick: () -> Unit
 ) {
     Card(
+        onClick = onClick,
         elevation = CardDefaults.cardElevation(
             defaultElevation = 8.dp
         ),

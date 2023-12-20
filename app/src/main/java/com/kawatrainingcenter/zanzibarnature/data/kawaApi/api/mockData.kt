@@ -8,6 +8,9 @@ class mockData @Inject constructor() {
     fun getLocations(): LocationsEntity {
         return locations
     }
+    fun getLocation(id: Int): LocationEntity {
+       return locations.locations.filter { it.id == id }[0]
+    }
 
     private val locations = LocationsEntity(listOf(
         LocationEntity(
@@ -29,7 +32,8 @@ class mockData @Inject constructor() {
             kawa = "Help to keep the beaches clean!. The Students from the Kawa Training Center often do beach clean-ups along this beach. If you want to support the Kawa Foundation in making Zanzibar a beautiful place again, feel free to contact us or make a donation.",
             images = listOf(
                 "https://cdn-0.johnnyafrica.com/wp-content/uploads/2020/11/dsc00891.jpg",
-                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fuploads-ssl.webflow.com%2F564479b70e1de1484e3e6973%2F5e0f1782a58dff16637ddc4a_8%2520Reasons%2520Why%2520Nungwi%2520Beach%2520Is%2520A%2520Top%2520Tourist%2520Destination.%2520The%2520Z%2520Hotel.jpg&f=1&nofb=1&ipt=90f88c6df8b6c006052cf31346b3d544866edbe2cb6c1f93c56f3ef9df0c055c&ipo=images"
+                "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fuploads-ssl.webflow.com%2F564479b70e1de1484e3e6973%2F5e0f1782a58dff16637ddc4a_8%2520Reasons%2520Why%2520Nungwi%2520Beach%2520Is%2520A%2520Top%2520Tourist%2520Destination.%2520The%2520Z%2520Hotel.jpg&f=1&nofb=1&ipt=90f88c6df8b6c006052cf31346b3d544866edbe2cb6c1f93c56f3ef9df0c055c&ipo=images",
+                "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.beach-on-map.com%2Fimg%2F7%2Fzanzibar-island-nungwi-beach-rocks-orig.jpg&f=1&nofb=1&ipt=6d662dbbf298e4dad9e5a916a528b24656100dcf2f8623cab36d046099660f45&ipo=images"
             ),
             icons = listOf("hiking", "photo", "swim"),
             location = "https://maps.app.goo.gl/gNobBCCybvivuWiaA"

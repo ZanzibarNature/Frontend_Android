@@ -17,7 +17,8 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state
 @Composable
 fun ExploreListPage(
     viewModel: ExploreListViewModel = hiltViewModel(),
-    navController: NavController
+    navController: NavController,
+    onLocationClick: (Int) -> Unit
 ) {
 
     val locations by viewModel.locations.collectAsState()
@@ -29,7 +30,10 @@ fun ExploreListPage(
                 LocationsState.Loading -> LoadingIndicator()
 
                 is LocationsState.Success -> {
-                    LocationList(locations = state.locations.locations)
+                    LocationList(
+                        locations = state.locations.locations,
+                        onLocationClick = { id -> onLocationClick(id)}
+                    )
                 }
 
                 is LocationsState.Error -> ErrorMessage(message = state.message)
