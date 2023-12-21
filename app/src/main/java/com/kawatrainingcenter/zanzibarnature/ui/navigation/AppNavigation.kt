@@ -21,6 +21,7 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.Calc
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.ContributePage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.dashboard.DashboardPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.ExploreListPage
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_map.ExploreMapPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.LocationDetailPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.component.LocationDetail
 
@@ -43,39 +44,43 @@ fun AppNavigation() {
                 )
             }
 
+            composable("explore_map") {
+                ExploreMapPage(
+                    navController = navController
+                )
+            }
+
             composable(
                 route = "location_detail/{location_id}",
                 arguments = listOf(
-                    navArgument("location_id") {type = NavType.IntType}
+                    navArgument("location_id") { type = NavType.IntType }
                 ),
-                enterTransition = {
-                    fadeIn(
-                        animationSpec = tween(
-                            300, easing = LinearEasing
-                        )
-                    ) + slideIntoContainer(
-                        animationSpec = tween(300, easing = EaseIn),
-                        towards = AnimatedContentTransitionScope.SlideDirection.Start
-                    )
-                },
-                exitTransition = {
-                    fadeOut(
-                        animationSpec = tween(
-                            300, easing = LinearEasing
-                        )
-                    ) + slideOutOfContainer(
-                        animationSpec = tween(300, easing = EaseOut),
-                        towards = AnimatedContentTransitionScope.SlideDirection.End
-                    )
-                }
+//                enterTransition = {
+//                    fadeIn(
+//                        animationSpec = tween(
+//                            300, easing = LinearEasing
+//                        )
+//                    ) + slideIntoContainer(
+//                        animationSpec = tween(300, easing = EaseIn),
+//                        towards = AnimatedContentTransitionScope.SlideDirection.Start
+//                    )
+//                },
+//                exitTransition = {
+//                    fadeOut(
+//                        animationSpec = tween(
+//                            300, easing = LinearEasing
+//                        )
+//                    ) + slideOutOfContainer(
+//                        animationSpec = tween(300, easing = EaseOut),
+//                        towards = AnimatedContentTransitionScope.SlideDirection.End
+//                    )
+//                }
             ) {
                 LocationDetailPage(
                     navController = navController
                 )
             }
         }
-
-
 
         composable("dashboard") {
             DashboardPage(navController = navController)

@@ -17,4 +17,7 @@
     <string name="calculated">calculated by CO₂ emissions</string>
     <string name="show_in_google_maps">Show route on Google Maps</string>
     <string name="error_message">Unknown Error\n</string>
+    <string name="ListView">List View\n</string>
+    <string name="MapView">Map View\n</string>
+    <string name="explore">Explore\n</string>
 </resources>

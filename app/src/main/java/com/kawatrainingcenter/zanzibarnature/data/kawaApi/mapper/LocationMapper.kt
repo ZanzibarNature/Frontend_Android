@@ -17,7 +17,8 @@ class LocationMapper @Inject constructor() {
                 kawa = entity.kawa!!,
                 images = entity.images,
                 icons = entity.icons,
-                location = entity.location
+                location = entity.location,
+                coords = entity.coords
             )
         }
     }

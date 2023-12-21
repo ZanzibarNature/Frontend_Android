@@ -9,6 +9,7 @@ data class Location(
     val images: List<String>,
     val icons: List<String>,
     val location: String,
+    val coords: List<Double>
     //val url: String
 )
 data class Locations(

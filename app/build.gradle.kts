@@ -55,6 +55,12 @@ android {
 }
 
 dependencies {
+    //Coil convert imageurl to drawable
+    implementation("io.coil-kt:coil:2.5.0")
+
+    //Open Street Map
+    implementation ("org.osmdroid:osmdroid-android:6.1.17")
+
     //pager (used for image slider)
     implementation("com.google.accompanist:accompanist-pager:0.23.1")
 

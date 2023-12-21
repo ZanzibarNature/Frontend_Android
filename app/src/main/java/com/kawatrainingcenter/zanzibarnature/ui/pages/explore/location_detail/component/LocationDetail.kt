@@ -90,6 +90,7 @@ fun LocationDetailPreview() {
                 icons = listOf("hiking", "photo", "swim"),
                 images = listOf("https://cdn-0.johnnyafrica.com/wp-content/uploads/2020/11/dsc00891.jpg"),
                 location = "https://maps.app.goo.gl/gNobBCCybvivuWiaA",
+                coords = listOf()
             )
         )
     }

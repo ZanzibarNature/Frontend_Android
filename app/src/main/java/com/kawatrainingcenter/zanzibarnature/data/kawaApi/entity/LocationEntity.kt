@@ -7,7 +7,8 @@ data class LocationEntity (
     val kawa: String?,
     val images: List<String>,
     val icons: List<String>,
-    val location: String
+    val location: String,
+    val coords: List<Double>
 )
 
 data class LocationsEntity (
