@@ -15,33 +15,34 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
-)
-
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = light_primary,
+    onBackground = light_on_background,
+    onPrimary = light_on_primary,
+    secondary = light_secondary,
+    onSecondary = light_on_secondary,
+    tertiary = light_tertiary,
+    onTertiary = light_on_tertiary,
+    surface = light_surface
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
 )
+
+//private val DarkColorScheme = darkColorScheme(
+//    primary = dark_primary,
+//    onBackground = dark_on_background,
+//    onPrimary = dark_on_primary,
+//    secondary = dark_secondary,
+//    tertiary = dark_tertiary,
+//    onTertiary = dark_on_tertiary
+//)
+
+
 
 @Composable
 fun ZanzibarNatureTheme(
-    darkTheme: Boolean = isSystemInDarkTheme(),
+    darkTheme: Boolean = false,
     // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -50,7 +51,7 @@ fun ZanzibarNatureTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
+        //darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
     val view = LocalView.current

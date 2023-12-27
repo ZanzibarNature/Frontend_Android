@@ -1,3 +1,29 @@
 <resources>
     <string name="app_name">Zanzibar Nature</string>
+    <string name="label_explore">Explore</string>
+    <string name="navigate_back_description">Navigate back</string>
+    <string name="currency_symbol">€</string>
+    <string name="donate">Donate</string>
+    <string name="enter_amount">Enter Amount\n</string>
+    <string name="calculate_co2">Calculate by your flight’s CO2 emissions</string>
+    <string name="general_unknown_error">Unknown Error\n</string>
+    <string name="error_text">Something went wrong…\n</string>
+    <string name="airport">airport</string>
+    <string name="Choose">Choose</string>
+    <string name="amount_of_tickets">Amount of tickets</string>
+    <string name="calculate">Calculate</string>
+    <string name="co2_calculator">CO₂ Calculator</string>
+    <string name="airplane_icon">Icon of airplane</string>
+    <string name="calculated">calculated by CO₂ emissions</string>
+    <string name="show_in_google_maps">Show route on Google Maps</string>
+    <string name="error_message">Unknown Error\n</string>
+    <string name="ListView">List View\n</string>
+    <string name="MapView">Map View\n</string>
+    <string name="explore">Explore\n</string>
+
+
+    <string name="save">Save</string>
+    <string name="saved">Saved</string>
+    <string name="Favourite_desc">Add this location to favorites</string>
+    <string name="saved_locations">Saved locations\n</string>
 </resources>
