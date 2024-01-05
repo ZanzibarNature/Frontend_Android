@@ -14,7 +14,7 @@ fun ProjectList(
     projects: List<Project>,
     onProjectClick: (String) -> Unit
 ) {
-    Box(modifier = Modifier.padding(top = 8.dp)) {
+    Box {
         LazyColumn {
             items(projects.count()) {
                 val item = projects[it]

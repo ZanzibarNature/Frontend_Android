@@ -15,7 +15,7 @@
     <string name="co2_calculator">CO₂ Calculator</string>
     <string name="airplane_icon">Icon of airplane</string>
     <string name="calculated">calculated by CO₂ emissions</string>
-    <string name="show_in_google_maps">Show route on Google Maps</string>
+    <string name="show_in_google_maps">Show on Google Maps</string>
     <string name="error_message">Unknown Error\n</string>
     <string name="ListView">List View\n</string>
     <string name="MapView">Map View\n</string>
@@ -30,4 +30,5 @@
     <string name="calculated_amount">"Calculated Amount: "</string>
     <string name="calculated_donation_explained">"With this amount, enough trees will be planted to offset your flight's CO₂ emissions. We're happy with every donation so please feel free to change the amount! "</string>
     <string name="choose_amount">Choose Amount</string>
+    <string name="our_projects">Our Projects\n</string>
 </resources>

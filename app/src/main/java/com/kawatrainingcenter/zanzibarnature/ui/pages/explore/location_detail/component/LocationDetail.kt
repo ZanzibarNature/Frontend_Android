@@ -119,10 +119,8 @@ fun LocationDetail(
                             modifier = Modifier
                                 .height(22.dp)
                                 .width(22.dp)
-
                         )
                     }
-
                 }
             }
         }
@@ -148,7 +146,7 @@ fun LocationDetail(
             )
             Image(
                 painter = painterResource(id = R.drawable.mapsicon),
-                contentDescription = "image description",
+                contentDescription = "google maps icon",
                 contentScale = ContentScale.FillHeight,
                 modifier = Modifier
                     .padding(start = 8.dp)

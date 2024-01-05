@@ -1,13 +1,22 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
@@ -28,10 +37,21 @@ fun ContributePage(
                 ProjectsState.Loading -> LoadingIndicator()
 
                 is ProjectsState.Success -> {
-                    ProjectList(
-                        projects = state.projects,
-                        onProjectClick = { name -> onProjectClick(name) }
-                    )
+                    Column {
+                        Text(
+                            text = stringResource(R.string.our_projects),
+                            style = TextStyle(
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight(700),
+                                color = MaterialTheme.colorScheme.onBackground,
+                            ),
+                            modifier = Modifier.padding(12.dp)
+                        )
+                        ProjectList(
+                            projects = state.projects,
+                            onProjectClick = { name -> onProjectClick(name) }
+                        )
+                    }
                 }
 
                 is ProjectsState.Error -> ErrorMessage(message = state.message)
