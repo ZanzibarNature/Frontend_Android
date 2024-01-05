@@ -34,21 +34,21 @@ fun OpenStreetMap(
             //zoom level
             mapView.controller.setZoom(11.5)
 
-            //initial location of map
+            //initial location of map (Zanzibar island)
             val geoPoint = GeoPoint(-6.1105, 39.329)
             mapView.controller.setCenter(geoPoint)
 
             locations.forEach { location ->
                 val marker = Marker(mapView)
 
-                val imageLoader = ImageLoader(context)
-                val request = ImageRequest.Builder(context)
-                    .data(location.images[0])
-                    .target { drawable ->
-                        marker.image = drawable
-                    }
-                    .build()
-                imageLoader.enqueue(request)
+//                val imageLoader = ImageLoader(context)
+//                val request = ImageRequest.Builder(context)
+//                    .data(location.images[0])
+//                    .target { drawable ->
+//                        marker.image = drawable
+//                    }
+//                    .build()
+//                imageLoader.enqueue(request)
 
                 marker.apply {
                     position = GeoPoint(location.coords[0], location.coords[1])

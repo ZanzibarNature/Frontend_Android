@@ -18,6 +18,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -56,7 +57,7 @@ fun CalculatorPage(
             Row (horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(
                     text = stringResource(R.string.co2_calculator),
-                    fontSize = 24.sp,
+                    fontSize = 26.sp,
                     fontWeight = FontWeight(800),
                     color = MaterialTheme.colorScheme.onBackground,
                     modifier = Modifier.padding(16.dp)
@@ -76,24 +77,75 @@ fun CalculatorPage(
                 )
             }
 
+
             when (val state = state) {
                 CompensationState.NotClicked -> {
-                    FlightForm(
-                        airports = airports,
-                        filterAirports = { string -> viewModel.filterAirports(string) },
-                        onClick = { airportFrom: Airport, airportTo: Airport, tickets: Int ->  viewModel.getCompensation(airportFrom, airportTo, tickets)}
-                    )
+                    Column {
+                        Text(
+                            text = stringResource(R.string.calculator_explanation),
+                            style = TextStyle(
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(400),
+                                color = MaterialTheme.colorScheme.onBackground
+                            ),
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+                        )
+
+                        FlightForm(
+                            airports = airports,
+                            filterAirports = { string -> viewModel.filterAirports(string) },
+                            onClick = { airportFrom: Airport, airportTo: Airport, tickets: Int ->  viewModel.getCompensation(airportFrom, airportTo, tickets)}
+                        )
+                    }
                 }
                 CompensationState.Loading -> LoadingIndicator()
 
                 is CompensationState.Success -> {
-                    ChooseAmount(
-                        compensation = state.compensation.total.roundToInt(),
-                        enteredAmount = enteredAmount,
-                        onChange = { data -> viewModel.updateEntered(data) }
-                    )
+                    Column {
+                        Text(
+                            text = "${stringResource(R.string.calculated_amount)} ${stringResource(R.string.currency_symbol)}${state.compensation.total.roundToInt()}",
+                            style = TextStyle(
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(600),
+                                color = MaterialTheme.colorScheme.onBackground
+                            ),
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 2.dp, bottom = 2.dp)
+                        )
+                        Text(
+                            text = stringResource(R.string.calculated_donation_explained),
+                            style = TextStyle(
+                                fontSize = 16.sp,
+                                fontWeight = FontWeight(400),
+                                color = MaterialTheme.colorScheme.onBackground
+                            ),
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 2.dp, bottom = 2.dp)
+                        )
 
-                    DefaultBtn(onClick = { uriHandler.openUri("https://www.paypal.com/donate?token=-DWIqPILgSa-E_sf6a_0Of6mlyzPOP0_bczmXNt2GMBlEjZit0zo0XYeYXzmyGiVhgpiBM6VVv4PY0Rg") }, text = stringResource(R.string.donate))
+                        Text(
+                            text = stringResource(R.string.choose_amount),
+                            style = TextStyle(
+                                fontSize = 22.sp,
+                                fontWeight = FontWeight(700),
+                                color = MaterialTheme.colorScheme.onBackground,
+                                ),
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 2.dp)
+                        )
+
+                        ChooseAmount(
+                            compensation = state.compensation.total.roundToInt(),
+                            enteredAmount = enteredAmount,
+                            onChange = { data -> viewModel.updateEntered(data) }
+                        )
+
+                        DefaultBtn(
+                            onClick = { uriHandler.openUri("https://www.paypal.com/donate?token=-DWIqPILgSa-E_sf6a_0Of6mlyzPOP0_bczmXNt2GMBlEjZit0zo0XYeYXzmyGiVhgpiBM6VVv4PY0Rg")},
+                            enabled = enteredAmount != 0,
+                            text =
+                            if(enteredAmount != 0) "${stringResource(R.string.donate)} ${stringResource(R.string.currency_symbol)}$enteredAmount"
+                            else stringResource(R.string.donate)
+                        )
+                    }
+
                 }
 
                 is CompensationState.Error -> ErrorMessage(message = state.message)

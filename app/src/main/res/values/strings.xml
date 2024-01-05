@@ -26,4 +26,8 @@
     <string name="saved">Saved</string>
     <string name="Favourite_desc">Add this location to favorites</string>
     <string name="saved_locations">Saved locations\n</string>
+    <string name="calculator_explanation">This tool will show you how much you could donate, so the Kawa Foundation will plant the right amount of trees to compensate your CO2.</string>
+    <string name="calculated_amount">"Calculated Amount: "</string>
+    <string name="calculated_donation_explained">"With this amount, enough trees will be planted to offset your flight's CO₂ emissions. We're happy with every donation so please feel free to change the amount! "</string>
+    <string name="choose_amount">Choose Amount</string>
 </resources>

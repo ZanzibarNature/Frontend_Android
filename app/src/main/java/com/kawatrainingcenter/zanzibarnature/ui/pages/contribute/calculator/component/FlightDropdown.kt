@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
@@ -23,6 +24,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.key
@@ -48,6 +51,7 @@ fun FlightDropdown(
     var selectedAirport by remember { mutableStateOf<Airport?>(null) }
     var text by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
+    val focusRequester = remember { FocusRequester() }
 
     Column {
         Text(
@@ -68,8 +72,14 @@ fun FlightDropdown(
                 value = text,
                 onValueChange = {
                     text = it
-                    if (text.length > 2) onChange(it)
-                    expanded = text.length > 2 && airports?.isNotEmpty() == true
+                    if (text.length > 2) {
+                        onChange(it)
+                    }
+
+                    expanded = if (text.length > 4) {
+                        airports?.isNotEmpty() == true
+                    } else false
+
                 },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
@@ -79,21 +89,33 @@ fun FlightDropdown(
                 keyboardActions = KeyboardActions(
                     onNext = { focusManager.moveFocus(FocusDirection.Down) }
                 ),
-                placeholder = { Text(text = "${stringResource(R.string.Choose)} $type ${stringResource(R.string.airport)}") },
+                placeholder = {
+                    Text(
+                        text = "${stringResource(R.string.Choose)} $type ${
+                            stringResource(
+                                R.string.airport
+                            )
+                        }"
+                    )
+                },
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = MaterialTheme.colorScheme.onTertiary,
                     containerColor = Color.Transparent
                 ),
                 modifier = Modifier
+                    .focusRequester(focusRequester)
                     .menuAnchor()
                     .fillMaxWidth()
                     .onKeyEvent { event ->
                         event.key == Key.Backspace && text.isEmpty()
                     }
             )
-            ExposedDropdownMenu(
+            DropdownMenu(
                 expanded = expanded,
-                onDismissRequest = { expanded = false },
+                onDismissRequest = {
+                    expanded = false
+                    focusRequester.requestFocus()
+                },
                 modifier = Modifier
                     .fillMaxWidth()
                     .offset(y = 10.dp)

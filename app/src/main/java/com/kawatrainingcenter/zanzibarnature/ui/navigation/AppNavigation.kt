@@ -19,6 +19,7 @@ import androidx.navigation.navArgument
 import com.kawatrainingcenter.zanzibarnature.ui.pages.about.AboutPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.CalculatorPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.ContributePage
+import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.DonatePage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.dashboard.DashboardPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.ExploreListPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_map.ExploreMapPage
@@ -91,8 +92,21 @@ fun AppNavigation() {
 
         navigation(startDestination = "contribute_main", route = "contribute") {
             composable("contribute_main") {
-                ContributePage(navController = navController)
+                ContributePage(
+                    navController = navController,
+                    onProjectClick = { navController.navigate("donate/${it}")}
+                )
             }
+
+            composable(
+                route = "donate/{project_name}",
+                arguments = listOf(
+                    navArgument("project_name") { type = NavType.StringType }
+                )
+            ) {
+                DonatePage(navController = navController)
+            }
+
             composable("calculator") {
                 CalculatorPage(navController = navController)
             }

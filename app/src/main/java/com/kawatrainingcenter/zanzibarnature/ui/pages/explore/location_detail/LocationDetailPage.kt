@@ -33,7 +33,6 @@ fun LocationDetailPage(
     ) {
         Column(modifier = androidx.compose.ui.Modifier.padding(it)) {
 
-
             when(val state = location) {
                 LocationState.Loading -> LoadingIndicator()
 

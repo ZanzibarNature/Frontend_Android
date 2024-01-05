@@ -32,7 +32,7 @@ fun AmountButton(
         onClick = onClick,
         shape =  RoundedCornerShape(size = 5.dp),
         modifier = Modifier
-            .padding(start = 12.dp, end = 12.dp, top = 10.dp, bottom = 10.dp)
+            .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
             .border(
                 width = if (isActive) 2.5.dp else 1.5.dp,
                 color = if (isActive) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onBackground,

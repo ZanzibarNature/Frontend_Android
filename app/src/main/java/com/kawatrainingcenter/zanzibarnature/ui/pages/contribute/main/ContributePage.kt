@@ -1,70 +1,41 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalUriHandler
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
-import com.kawatrainingcenter.zanzibarnature.ui.components.button.DefaultBtn
-import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.component.BigAmountBtn
-import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.component.ChooseAmount
+import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
+import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
+import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.component.ProjectList
+import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.state.ProjectsState
 
 @Composable
 fun ContributePage(
     navController: NavController,
-    viewModel: ContributeViewModel = hiltViewModel()
+    viewModel: ContributeViewModel = hiltViewModel(),
+    onProjectClick: (String) -> Unit
 ) {
-
-    val uriHandler = LocalUriHandler.current
-    val enteredAmount by viewModel.entered.collectAsState()
+    val projects by viewModel.projects.collectAsState()
 
     AppScaffold(title = "Contribute", navController = navController) {
-        Column(modifier = Modifier.padding(it)) {
-            Text(
-                text = "Donate",
-                fontSize = 20.sp,
-                fontWeight = FontWeight(700),
-                color = MaterialTheme.colorScheme.onBackground,
-                modifier = Modifier.padding(16.dp)
-            )
+        Box(modifier = Modifier.padding(it)) {
+            when (val state = projects) {
+                ProjectsState.Loading -> LoadingIndicator()
 
-            Column(
-                verticalArrangement = Arrangement.SpaceBetween,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+                is ProjectsState.Success -> {
+                    ProjectList(
+                        projects = state.projects,
+                        onProjectClick = { name -> onProjectClick(name) }
+                    )
+                }
 
-                ChooseAmount(
-                    enteredAmount = enteredAmount,
-                    onChange = { data -> viewModel.updateEntered(data) }
-                )
-
-                BigAmountBtn(
-                    onClick = { navController.navigate("calculator") },
-                    label = stringResource(R.string.calculate_co2),
-                    isActive = false
-                )
-
-                Spacer(modifier = Modifier.padding(100.dp))
-
-                DefaultBtn(onClick = { uriHandler.openUri("https://www.paypal.com/donate?token=-DWIqPILgSa-E_sf6a_0Of6mlyzPOP0_bczmXNt2GMBlEjZit0zo0XYeYXzmyGiVhgpiBM6VVv4PY0Rg")}, text = stringResource(R.string.donate))
+                is ProjectsState.Error -> ErrorMessage(message = state.message)
             }
         }
-
-
     }
 }

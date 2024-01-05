@@ -27,7 +27,6 @@ fun ExploreListPage(
     navController: NavController,
     onLocationClick: (Int) -> Unit
 ) {
-
     val locations by viewModel.locations.collectAsState()
 
     AppScaffold(title = "", navController = navController) {
@@ -55,7 +54,6 @@ fun ExploreListPage(
                         }
                     }
                 }
-
 
                 is LocationsState.Error -> ErrorMessage(message = state.message)
             }

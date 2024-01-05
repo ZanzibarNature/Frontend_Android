@@ -2,6 +2,8 @@ package com.kawatrainingcenter.zanzibarnature.data.kawaApi.api
 
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.entity.LocationEntity
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.entity.LocationsEntity
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Project
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Projects
 import javax.inject.Inject
 
 class mockData @Inject constructor() {
@@ -12,6 +14,39 @@ class mockData @Inject constructor() {
     fun getLocation(id: Int): LocationEntity {
         return locations.locations.filter { it.id == id }[0]
     }
+
+    fun getProjects(): Projects {
+        return projects
+    }
+
+    fun getProject(name: String): Project {
+        return projects.projects.filter { it.name == name }[0]
+    }
+
+    private val projects = Projects(
+        listOf(
+            Project(
+                name = "Tree Planting",
+                description = "Protecting and restoring Zanzibar’s forests. Help us to create buffer zones and protect wild life.",
+                image ="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fforestsinternational.org%2Fwp-content%2Fuploads%2F2021%2F03%2FZanzibari-woman-planting-tree-seedling-768x512.jpg&f=1&nofb=1&ipt=447303feee43463e5f7f49a44e283eb963596ee674b521c0ed05a73b40a5781a&ipo=images"
+            ),
+            Project(
+                name = "Outdoor Classroom",
+                description = "URGENT: Donation needed for outdoor classroom.",
+                image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2Foriginals%2F87%2Fd4%2F47%2F87d4478a6d9bf7cad3f50694afaf40f6.png&f=1&nofb=1&ipt=b0e819fafc6dc063e80b4bd41661735375cb38b6e2a7e39a4193faaab53f6006&ipo=images"
+            ),
+            Project(
+                name = "Beach Cleanup",
+                description = "We organise a beach clean up every month with the students of the Kawa Training Center.",
+                image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.undp.org%2Fsites%2Fg%2Ffiles%2Fzskgke326%2Ffiles%2Fmigration%2Fgh%2FUNDP_Ghana_Beach_Clean_Up--1.jpg&f=1&nofb=1&ipt=3af44fb347becaa3f4c41803391cc561004bb8fd875fe82e86084c775d62469a&ipo=images"
+            ),
+            Project(
+                name = "The Kawa Foundation",
+                description = "The Kawa Foundation aims to preserve cultural, environmental and historical heritage of Zanzibar.",
+                image = "https://lh3.googleusercontent.com/proxy/Fqfc-FW3AbNxGeiB2ZWjNnFXFCA8nZYWgz8piBmgiHUBooH6szM-e9qarYVWx616KreCmW0c46kxXDO72fJopfRJzczS_3fmsgBlkwKU35GV8GkJqeriqWs0EPT5"
+            )
+        )
+    )
 
     private val locations = LocationsEntity(
         listOf(
@@ -38,7 +73,7 @@ class mockData @Inject constructor() {
                     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fuploads-ssl.webflow.com%2F564479b70e1de1484e3e6973%2F5e0f1782a58dff16637ddc4a_8%2520Reasons%2520Why%2520Nungwi%2520Beach%2520Is%2520A%2520Top%2520Tourist%2520Destination.%2520The%2520Z%2520Hotel.jpg&f=1&nofb=1&ipt=90f88c6df8b6c006052cf31346b3d544866edbe2cb6c1f93c56f3ef9df0c055c&ipo=images",
                     "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.beach-on-map.com%2Fimg%2F7%2Fzanzibar-island-nungwi-beach-rocks-orig.jpg&f=1&nofb=1&ipt=6d662dbbf298e4dad9e5a916a528b24656100dcf2f8623cab36d046099660f45&ipo=images"
                 ),
-                icons = listOf("hiking", "photo", "swim"),
+                icons = listOf("hiking", "photo", "swim", "kawa"),
                 location = "https://maps.app.goo.gl/gNobBCCybvivuWiaA",
                 coords = listOf(-5.723657836087891, 39.29504563899864)
             ),
@@ -96,7 +131,7 @@ class mockData @Inject constructor() {
                     "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/26/e3/94/5c/mit-dem-boot-von-chwaka.jpg?w=1400&h=-1&s=1",
                     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.wixstatic.com%2Fmedia%2Fd70bbf_f111c3a4d0f84a67ba47911fdf44a357.jpg&f=1&nofb=1&ipt=5c01a0983ba9e23968d799ba3ccb999c19077a576f8017cdbf9ad9d85a9ecdb3&ipo=images",
                 ),
-                icons = listOf("photo", "bike", "monkey", "beach", "tour"),
+                icons = listOf("photo", "monkey", "swim", "tour", "kawa"),
                 location = "https://maps.app.goo.gl/B7DJTMfQfGFunrdi9",
                 coords = listOf(-6.160267050390132, 39.19354231688733)
             ),

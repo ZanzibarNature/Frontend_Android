@@ -34,6 +34,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
@@ -76,7 +77,7 @@ fun EnterAmountBtn(
                 textColor = MaterialTheme.colorScheme.onBackground
             ),
             modifier = Modifier
-                .padding(start = 12.dp, end = 12.dp, top = 10.dp, bottom = 10.dp)
+                .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
                 .border(
                     width = 2.5.dp,
                     color = MaterialTheme.colorScheme.tertiary,
@@ -92,14 +93,17 @@ fun EnterAmountBtn(
         )
     } else {
         Button(
-            onClick = { onClick() },
+            onClick = {
+                if (text.toInt() > 0) onChange(text.toInt())
+                onClick()
+            },
             shape = RoundedCornerShape(5.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = MaterialTheme.colorScheme.background,
                 contentColor = MaterialTheme.colorScheme.onBackground
             ),
             modifier = Modifier
-                .padding(start = 12.dp, end = 12.dp, top = 10.dp, bottom = 10.dp)
+                .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
                 .border(
                     width = 1.5.dp,
                     color = MaterialTheme.colorScheme.onBackground,
@@ -124,6 +128,7 @@ fun EnterAmountBtn(
                     else "${stringResource(R.string.currency_symbol)}$text",
                     fontSize = 17.sp,
                     fontWeight = FontWeight(400),
+                    overflow = TextOverflow.Clip,
                     style = TextStyle(
                         color = MaterialTheme.colorScheme.onBackground,
                         textAlign = TextAlign.Center,
