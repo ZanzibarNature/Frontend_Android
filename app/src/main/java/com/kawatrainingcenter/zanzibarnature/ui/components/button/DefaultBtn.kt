@@ -31,7 +31,7 @@ fun DefaultBtn(
     Button(
         onClick = onClick,
         enabled = enabled,
-        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary,),
+        colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.tertiary),
         shape = RoundedCornerShape(20.dp),
         modifier = Modifier
             .padding(12.dp)

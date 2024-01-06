@@ -22,6 +22,7 @@ import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.component.ProjectList
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.state.ProjectsState
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.LocationList
 
 @Composable
 fun ContributePage(
@@ -37,21 +38,23 @@ fun ContributePage(
                 ProjectsState.Loading -> LoadingIndicator()
 
                 is ProjectsState.Success -> {
-                    Column {
-                        Text(
-                            text = stringResource(R.string.our_projects),
-                            style = TextStyle(
-                                fontSize = 22.sp,
-                                fontWeight = FontWeight(700),
-                                color = MaterialTheme.colorScheme.onBackground,
-                            ),
-                            modifier = Modifier.padding(12.dp)
-                        )
+                    Text(
+                        text = stringResource(R.string.our_projects),
+                        style = TextStyle(
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight(700),
+                            color = MaterialTheme.colorScheme.onBackground,
+                        ),
+                        modifier = Modifier.padding(12.dp)
+                    )
+                    Box(modifier = Modifier.padding(top = 44.dp)) {
                         ProjectList(
                             projects = state.projects,
                             onProjectClick = { name -> onProjectClick(name) }
                         )
                     }
+
+
                 }
 
                 is ProjectsState.Error -> ErrorMessage(message = state.message)

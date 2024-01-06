@@ -47,13 +47,14 @@ class CalculatorViewModel @Inject constructor(
         mutableAirport.value = airports.filter { it.name?.contains(text, ignoreCase = true) == true }
     }
 
-    fun getCompensation(from: Airport, to: Airport, tickets: Int) {
+    fun getCompensation(from: Airport, to: Airport, tickets: Int, oneway: Boolean) {
         mutableState.value = CompensationState.Loading
-        viewModelScope.launch { fetchCompensation(from = from, to = to, tickets) }
+        viewModelScope.launch { fetchCompensation(from = from, to = to, tickets = tickets, oneway = oneway) }
     }
 
-    private suspend fun fetchCompensation(from: Airport, to: Airport, tickets: Int) {
-        kawaRepository.getCompensation(from = from, to = to, currency = "EUR", tickets)
+    private suspend fun fetchCompensation(from: Airport, to: Airport, tickets: Int, oneway: Boolean) {
+        val oneway2: Int = if(oneway) 1 else 2
+        kawaRepository.getCompensation(from = from, to = to, currency = "EUR", tickets = tickets, oneway = oneway2)
             .onSuccess { mutableState.value = compensationStateMapper.map(it) }
             .getOrElse {
                 mutableState.value = CompensationState.Error(

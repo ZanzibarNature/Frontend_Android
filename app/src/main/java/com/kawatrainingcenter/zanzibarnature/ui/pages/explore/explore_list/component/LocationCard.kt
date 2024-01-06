@@ -1,6 +1,5 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -9,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.material3.Card
@@ -18,30 +18,28 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.BlendMode
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.CompositingStrategy
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 import com.kawatrainingcenter.zanzibarnature.ui.helper.IconType
-
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LocationCard(
     location: Location,
-    onClick: () -> Unit
+    onClick: () -> Unit,
+    isFavourite: Boolean
 ) {
 
     val icons = listOf(
@@ -64,15 +62,31 @@ fun LocationCard(
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
         Row {
-            AsyncImage(
-                model = location.images[0],
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .width(140.dp),
-                //painter = painterResource(R.drawable.beach),
-                contentScale = ContentScale.Crop,
-                contentDescription = ""
-            )
+            Box {
+
+                AsyncImage(
+                    model = location.images[0],
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .width(140.dp),
+                    contentScale = ContentScale.Crop,
+                    contentDescription = ""
+                )
+
+                if (isFavourite) {
+                    Icon(
+                        painter = painterResource(R.drawable.favorite),
+                        contentDescription = stringResource(R.string.favourite_location),
+                        tint = Color(0xFFF2411A),
+                        modifier = Modifier
+                            .width(30.dp)
+                            .height(30.dp)
+                            .clip(CircleShape)
+                            .padding(4.dp)
+                    )
+                }
+            }
+
             Column {
                 Text(
                     modifier = Modifier.padding(start = 8.dp, top = 4.dp),

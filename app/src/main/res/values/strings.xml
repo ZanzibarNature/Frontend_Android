@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">Zanzibar Nature</string>
+
+    Kawa Foundation Information
+    <string name="visit_us">Come visit us (Mo-Fri 9am-5pm):</string>
+    <string name="address_kawa">Kiponda Street Zanzibar TZ, 3612, Tanzania</string>
+    <string name="kawa_phone_number">+255777957995</string>
+    <string name="kawa_email">info@kawatrainingcenter.com</string>
+
+
     <string name="label_explore">Explore</string>
     <string name="navigate_back_description">Navigate back</string>
     <string name="currency_symbol">€</string>
@@ -31,4 +39,11 @@
     <string name="calculated_donation_explained">"With this amount, enough trees will be planted to offset your flight's CO₂ emissions. We're happy with every donation so please feel free to change the amount! "</string>
     <string name="choose_amount">Choose Amount</string>
     <string name="our_projects">Our Projects\n</string>
+    <string name="favourite_location">This location is your favourite\n</string>
+    <string name="kawa_foundation">The Kawa Foundation\n</string>
+    <string name="kawa_foundation_text">The Kawa Foundation aims to preserve cultural, environmental and historical heritage of Zanzibar. We educate students in the tourism industry.</string>
+
+    <string name="return_flight">Return Flight</string>
+    <string name="departing">departing</string>
+    <string name="destination">destination</string>
 </resources>

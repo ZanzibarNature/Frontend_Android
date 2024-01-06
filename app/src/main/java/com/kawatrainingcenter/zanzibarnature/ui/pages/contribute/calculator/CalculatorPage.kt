@@ -88,13 +88,13 @@ fun CalculatorPage(
                                 fontWeight = FontWeight(400),
                                 color = MaterialTheme.colorScheme.onBackground
                             ),
-                            modifier = Modifier.padding(start = 16.dp, end = 16.dp)
+                            modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 16.dp)
                         )
 
                         FlightForm(
                             airports = airports,
                             filterAirports = { string -> viewModel.filterAirports(string) },
-                            onClick = { airportFrom: Airport, airportTo: Airport, tickets: Int ->  viewModel.getCompensation(airportFrom, airportTo, tickets)}
+                            onClick = { airportFrom: Airport, airportTo: Airport, tickets: Int, oneway: Boolean ->  viewModel.getCompensation(airportFrom, airportTo, tickets, oneway)}
                         )
                     }
                 }

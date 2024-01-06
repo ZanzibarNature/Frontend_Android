@@ -11,7 +11,8 @@ import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 @Composable
 fun LocationList (
     locations: List<Location>,
-    onLocationClick: (Int) -> Unit
+    onLocationClick: (Int) -> Unit,
+    favorites: Set<Int>
 ){
     Box(modifier = Modifier.padding(top = 8.dp)) {
         LazyColumn {
@@ -19,7 +20,8 @@ fun LocationList (
                 val item = locations[it]
                 LocationCard(
                     location = item,
-                    onClick = { onLocationClick(item.id) }
+                    onClick = { onLocationClick(item.id) },
+                    isFavourite = favorites.contains(item.id)
                 )
             }
         }

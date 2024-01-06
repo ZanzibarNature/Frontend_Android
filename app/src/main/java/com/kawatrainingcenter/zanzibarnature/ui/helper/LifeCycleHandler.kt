@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.ui.pages.dashboard.component
+package com.kawatrainingcenter.zanzibarnature.ui.helper
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect

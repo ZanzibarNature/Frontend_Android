@@ -53,7 +53,7 @@ fun FlightDropdown(
     val focusManager = LocalFocusManager.current
     val focusRequester = remember { FocusRequester() }
 
-    Column {
+    Column (modifier = Modifier.padding(start = 16.dp, end = 16.dp,  bottom = 4.dp, top = 8.dp)) {
         Text(
             text = "${type.capitalize()} ${stringResource(R.string.airport)}",
         )

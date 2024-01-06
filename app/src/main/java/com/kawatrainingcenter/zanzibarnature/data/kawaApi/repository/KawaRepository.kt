@@ -26,7 +26,8 @@ class KawaRepository @Inject constructor(
         from: Airport,
         to: Airport,
         currency: String,
-        tickets: Int
+        tickets: Int,
+        oneway: Int
     ): Result<Compensation> {
         return runCatching {
             kawaApi.getCompensation(
@@ -38,7 +39,7 @@ class KawaRepository @Inject constructor(
             )
         }
             .map(responseMapper::map).flatten()
-            .map { compensationMapper.map(it, tickets) }.flatten()
+            .map { compensationMapper.map(it, tickets, oneway) }.flatten()
     }
 
     fun getLocations(): Result<Locations> {
