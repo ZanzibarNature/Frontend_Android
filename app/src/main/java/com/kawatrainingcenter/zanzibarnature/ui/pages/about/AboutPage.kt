@@ -1,13 +1,16 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.about
 
 import androidx.compose.foundation.Image
+
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
@@ -31,11 +34,16 @@ fun AboutPage(
     navController: NavController
 ) {
     val uriHandler = LocalUriHandler.current
+    val scrollState = rememberScrollState()
 
     AppScaffold(title = "About", navController = navController)
     {
-        Box(modifier = Modifier.padding(it)) {
-            Column(modifier = Modifier.padding(16.dp)){
+        Box(
+            modifier = Modifier
+                .padding(it)
+                .verticalScroll(scrollState)
+        ) {
+            Column(modifier = Modifier.padding(16.dp)) {
                 Text(
                     text = stringResource(R.string.kawa_foundation),
                     style = TextStyle(
@@ -111,7 +119,7 @@ fun AboutPage(
                             fontSize = 16.sp,
                             fontWeight = FontWeight(400),
                             color = MaterialTheme.colorScheme.onBackground,
-                            ),
+                        ),
                         modifier = Modifier.padding(start = 8.dp)
                     )
                 }

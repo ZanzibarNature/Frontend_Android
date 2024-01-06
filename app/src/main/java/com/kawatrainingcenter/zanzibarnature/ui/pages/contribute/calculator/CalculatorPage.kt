@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -47,12 +49,14 @@ fun CalculatorPage(
 
     val enteredAmount by viewModel.entered.collectAsState()
 
+    val scrollState = rememberScrollState()
+
     AppScaffold(
         title = "Contribute",
         navController = navController,
         navigation = NavigationType.Back { navController.popBackStack() }
     ) {
-        Column(modifier = Modifier.padding(it), verticalArrangement = Arrangement.SpaceBetween) {
+        Column(modifier = Modifier.padding(it).verticalScroll(scrollState), verticalArrangement = Arrangement.SpaceBetween) {
 
             Row (horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(

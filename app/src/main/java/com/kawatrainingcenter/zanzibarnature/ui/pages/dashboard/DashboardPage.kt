@@ -61,7 +61,7 @@ fun DashboardPage(
                         ),
                         modifier = Modifier.padding(start = 12.dp, top = 12.dp)
                     )
-                    Box (modifier = Modifier.padding(top = 34.dp)){
+                    Box (modifier = Modifier.padding(top = 38.dp)){
                         LocationList(
                             locations = state.locations,
                             onLocationClick = { id -> onLocationClick(id) },

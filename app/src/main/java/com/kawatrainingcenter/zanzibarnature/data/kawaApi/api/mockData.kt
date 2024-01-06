@@ -67,7 +67,7 @@ class mockData @Inject constructor() {
                 id = 2,
                 title = "Nungwi Beach",
                 description = "A very quiet beach on the outskirts of the island. Very beautiful place to enjoy the sunset.",
-                kawa = "Help to keep the beaches clean!. The Students from the Kawa Training Center often do beach clean-ups along this beach. If you want to support the Kawa Foundation in making Zanzibar a beautiful place again, feel free to contact us or make a donation.",
+                kawa = "Help to keep the beaches clean! The Students from the Kawa Training Center often do beach clean-ups along this beach. If you want to support the Kawa Foundation in making Zanzibar a beautiful place again, feel free to contact us or make a donation.",
                 images = listOf(
                     "https://cdn-0.johnnyafrica.com/wp-content/uploads/2020/11/dsc00891.jpg",
                     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fuploads-ssl.webflow.com%2F564479b70e1de1484e3e6973%2F5e0f1782a58dff16637ddc4a_8%2520Reasons%2520Why%2520Nungwi%2520Beach%2520Is%2520A%2520Top%2520Tourist%2520Destination.%2520The%2520Z%2520Hotel.jpg&f=1&nofb=1&ipt=90f88c6df8b6c006052cf31346b3d544866edbe2cb6c1f93c56f3ef9df0c055c&ipo=images",

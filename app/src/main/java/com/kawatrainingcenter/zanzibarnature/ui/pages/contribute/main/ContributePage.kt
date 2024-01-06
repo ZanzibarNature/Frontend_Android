@@ -1,8 +1,11 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main
 
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,33 +35,35 @@ fun ContributePage(
 ) {
     val projects by viewModel.projects.collectAsState()
 
-    AppScaffold(title = "Contribute", navController = navController) {
-        Box(modifier = Modifier.padding(it)) {
-            when (val state = projects) {
-                ProjectsState.Loading -> LoadingIndicator()
+    AppScaffold(title = "Contribute", navController = navController)
+    {
+        Box(
+            modifier = Modifier
+                .padding(it)
+        ) {
+                when (val state = projects) {
+                    ProjectsState.Loading -> LoadingIndicator()
 
-                is ProjectsState.Success -> {
-                    Text(
-                        text = stringResource(R.string.our_projects),
-                        style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight(700),
-                            color = MaterialTheme.colorScheme.onBackground,
-                        ),
-                        modifier = Modifier.padding(12.dp)
-                    )
-                    Box(modifier = Modifier.padding(top = 44.dp)) {
-                        ProjectList(
-                            projects = state.projects,
-                            onProjectClick = { name -> onProjectClick(name) }
+                    is ProjectsState.Success -> {
+                        Text(
+                            text = stringResource(R.string.our_projects),
+                            style = TextStyle(
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight(700),
+                                color = MaterialTheme.colorScheme.onBackground,
+                            ),
+                            modifier = Modifier.padding(12.dp)
                         )
+                        Box(modifier = Modifier.padding(top = 44.dp)) {
+                            ProjectList(
+                                projects = state.projects,
+                                onProjectClick = { name -> onProjectClick(name) }
+                            )
+                        }
                     }
 
-
+                    is ProjectsState.Error -> ErrorMessage(message = state.message)
                 }
-
-                is ProjectsState.Error -> ErrorMessage(message = state.message)
-            }
         }
     }
 }

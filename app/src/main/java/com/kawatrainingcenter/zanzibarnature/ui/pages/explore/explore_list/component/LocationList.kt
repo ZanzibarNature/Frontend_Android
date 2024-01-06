@@ -1,6 +1,7 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -14,7 +15,7 @@ fun LocationList (
     onLocationClick: (Int) -> Unit,
     favorites: Set<Int>
 ){
-    Box(modifier = Modifier.padding(top = 8.dp)) {
+    Box {
         LazyColumn {
             items(locations.count()) {
                 val item = locations[it]

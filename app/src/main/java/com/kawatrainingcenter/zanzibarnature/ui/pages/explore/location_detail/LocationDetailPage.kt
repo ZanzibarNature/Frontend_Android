@@ -1,12 +1,11 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
@@ -31,7 +30,7 @@ fun LocationDetailPage(
         navController = navController,
         navigation = NavigationType.Back { navController.popBackStack() }
     ) {
-        Column(modifier = androidx.compose.ui.Modifier.padding(it)) {
+        Column(modifier = Modifier.padding(it)) {
 
             when(val state = location) {
                 LocationState.Loading -> LoadingIndicator()
@@ -42,7 +41,8 @@ fun LocationDetailPage(
                        isFavourite = isFav,
                        onClickFavourite = {
                            viewModel.addToFavourite(state.location.id)
-                       }
+                       },
+                       navigateToContribute = { navController.navigate("contribute") }
                    )
                 }
 

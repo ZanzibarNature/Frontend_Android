@@ -43,7 +43,7 @@ fun ExploreListPage(
     }
 
     AppScaffold(title = "", navController = navController) {
-        Box(modifier = Modifier.padding(it)) {
+        Box(modifier = Modifier.padding(top = 0.dp, bottom = 56.dp)) {
 
             when (val state = locations) {
                 LocationsState.Loading -> LoadingIndicator()

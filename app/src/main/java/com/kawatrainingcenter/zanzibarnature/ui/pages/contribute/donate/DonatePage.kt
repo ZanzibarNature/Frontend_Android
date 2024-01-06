@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,13 +44,15 @@ fun DonatePage(
     val enteredAmount by viewModel.entered.collectAsState()
     val project by viewModel.project.collectAsState()
 
+    val scrollState = rememberScrollState()
+
     AppScaffold(
         title = "Contribute",
         navController = navController,
         navigation = NavigationType.Back { navController.popBackStack() }
     ) {
 
-        Column(modifier = Modifier.padding(it)) {
+        Column(modifier = Modifier.padding(it).verticalScroll(scrollState)) {
 
             when (val state = project) {
                 ProjectState.Loading -> LoadingIndicator()

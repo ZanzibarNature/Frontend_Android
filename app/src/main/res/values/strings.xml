@@ -46,4 +46,6 @@
     <string name="return_flight">Return Flight</string>
     <string name="departing">departing</string>
     <string name="destination">destination</string>
+    <string name="kawa">Kawa</string>
+    <string name="contribute_want">Want to contribute?</string>
 </resources>

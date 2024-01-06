@@ -45,7 +45,8 @@ import com.kawatrainingcenter.zanzibarnature.ui.theme.ZanzibarNatureTheme
 fun LocationDetail(
     location: Location,
     isFavourite: Boolean,
-    onClickFavourite: () -> Unit
+    onClickFavourite: () -> Unit,
+    navigateToContribute: () -> Unit
 ) {
     val icons = listOf(
         IconType.Hiking,
@@ -131,6 +132,10 @@ fun LocationDetail(
             modifier = Modifier.padding(16.dp)
         )
 
+        if(location.kawa != "" && location.kawa?.isNotEmpty() == true) {
+            KawaDescription(description = "${location.kawa}", onClick = navigateToContribute)
+        }
+
         Button(
             onClick = { uriHandler.openUri(location.location) },
             colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.secondary),
@@ -175,7 +180,8 @@ fun LocationDetailPreview() {
                 coords = listOf()
             ),
             isFavourite = false,
-            onClickFavourite = {}
+            onClickFavourite = {},
+            navigateToContribute = {}
         )
     }
 }
