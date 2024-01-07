@@ -84,7 +84,6 @@ fun FlightDropdown(
                     expanded = if (text.length > 4) {
                         airports?.isNotEmpty() == true
                     } else false
-
                 },
                 trailingIcon = {
                     if (text.isNotEmpty()) {
