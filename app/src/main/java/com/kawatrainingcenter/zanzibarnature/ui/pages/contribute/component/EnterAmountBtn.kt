@@ -63,7 +63,7 @@ fun EnterAmountBtn(
         TextField(
             value = if (text == "0") "" else text,
             onValueChange = {
-                if(it.length < 10) {
+                if (it.length < 10) {
                     text = it.filter { number -> number.isDigit() }
                     if (text != "") onChange(text.toInt()) else onChange(0)
                     onClick()
@@ -104,7 +104,9 @@ fun EnterAmountBtn(
     } else {
         Button(
             onClick = {
-                if (text.toInt() > 0) onChange(text.toInt())
+                if (text != "") {
+                    if (text.toInt() > 0) onChange(text.toInt())
+                }
                 onClick()
             },
             shape = RoundedCornerShape(5.dp),
