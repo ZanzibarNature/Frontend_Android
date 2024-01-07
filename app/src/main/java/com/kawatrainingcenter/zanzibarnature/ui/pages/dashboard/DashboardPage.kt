@@ -68,8 +68,6 @@ fun DashboardPage(
                             favorites = emptySet()
                         )
                     }
-
-
                 }
 
                 is LocationsState.Error -> ErrorMessage(message = state.message)

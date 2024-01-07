@@ -2,6 +2,7 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
@@ -38,6 +39,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
+import java.text.NumberFormat
+import java.util.Locale
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,13 +54,20 @@ fun EnterAmountBtn(
     var text by remember { mutableStateOf(amount.toString()) }
     val focusManager = LocalFocusManager.current
 
+    fun formatNumber(number: Int): String {
+        val format = NumberFormat.getNumberInstance(Locale.GERMANY)
+        return format.format(number)
+    }
+
     if (isActive) {
         TextField(
             value = if (text == "0") "" else text,
             onValueChange = {
-                text = it.filter { number -> number.isDigit() }
-                if (text != "") onChange(text.toInt()) else onChange(0)
-                onClick()
+                if(it.length < 10) {
+                    text = it.filter { number -> number.isDigit() }
+                    if (text != "") onChange(text.toInt()) else onChange(0)
+                    onClick()
+                }
             },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
@@ -102,6 +112,7 @@ fun EnterAmountBtn(
                 containerColor = MaterialTheme.colorScheme.background,
                 contentColor = MaterialTheme.colorScheme.onBackground
             ),
+            contentPadding = PaddingValues(0.dp),
             modifier = Modifier
                 .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
                 .border(
@@ -125,7 +136,7 @@ fun EnterAmountBtn(
                 Text(
                     text =
                     if (text == "" || text == "0") stringResource(R.string.enter_amount)
-                    else "${stringResource(R.string.currency_symbol)}$text",
+                    else "${stringResource(R.string.currency_symbol)}${formatNumber(text.toInt())}",
                     fontSize = 17.sp,
                     fontWeight = FontWeight(400),
                     overflow = TextOverflow.Clip,

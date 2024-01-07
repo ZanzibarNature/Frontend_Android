@@ -33,6 +33,8 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.donate.DonateVi
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.donate.component.ProjectTile
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.donate.state.ProjectState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.donate.state.ProjectStateMapper
+import java.text.NumberFormat
+import java.util.Locale
 
 @Composable
 fun DonatePage(
@@ -45,6 +47,11 @@ fun DonatePage(
     val project by viewModel.project.collectAsState()
 
     val scrollState = rememberScrollState()
+
+    fun formatNumber(number: Int): String {
+        val format = NumberFormat.getNumberInstance(Locale.GERMANY)
+        return format.format(number)
+    }
 
     AppScaffold(
         title = "Contribute",
@@ -92,7 +99,7 @@ fun DonatePage(
                             onClick = { uriHandler.openUri("https://www.paypal.com/donate?token=-DWIqPILgSa-E_sf6a_0Of6mlyzPOP0_bczmXNt2GMBlEjZit0zo0XYeYXzmyGiVhgpiBM6VVv4PY0Rg")},
                             enabled = enteredAmount != 0,
                             text =
-                            if(enteredAmount != 0) "${stringResource(R.string.donate)} ${stringResource(R.string.currency_symbol)}$enteredAmount"
+                            if(enteredAmount != 0) "${stringResource(R.string.donate)} ${stringResource(R.string.currency_symbol)}${formatNumber(enteredAmount)}"
                             else stringResource(R.string.donate)
                         )
                     }
