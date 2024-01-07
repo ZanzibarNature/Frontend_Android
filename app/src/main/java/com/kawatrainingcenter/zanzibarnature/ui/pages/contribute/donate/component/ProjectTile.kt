@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Project
+import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -34,9 +35,9 @@ fun ProjectTile(
     Card(
         modifier = Modifier
             .padding(12.dp)
-            .shadow(elevation = 4.dp, spotColor = Color.Black, ambientColor = Color.Black)
             .fillMaxWidth()
             .height(280.dp),
+
         shape = RoundedCornerShape(5.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
     ) {
