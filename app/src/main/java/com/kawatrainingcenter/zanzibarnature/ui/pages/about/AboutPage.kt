@@ -17,6 +17,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.painterResource
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
+import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 
 @Composable
 fun AboutPage(
@@ -85,7 +87,16 @@ fun AboutPage(
                     onClick = { uriHandler.openUri("https://maps.app.goo.gl/B7XkkG7axUhHDnDy9") },
                     colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.secondary),
                     shape = RoundedCornerShape(size = 5.dp),
-                    modifier = Modifier.padding(bottom = 16.dp)
+                    modifier = Modifier
+                        .padding(bottom = 16.dp)
+                        .customShadow(
+                            color = Color.Black.copy(0.4f),
+                            borderRadius = 5.dp,
+                            blurRadius = 4.dp,
+                            offsetX = 2.dp,
+                            offsetY = 8.dp,
+                            spread = 0.dp
+                        ),
                 ) {
                     Text(
                         text = stringResource(R.string.show_in_google_maps),
@@ -105,6 +116,15 @@ fun AboutPage(
                             .height(27.dp)
                     )
                 }
+
+                Text(
+                    text = stringResource(R.string.contact),
+                    style = TextStyle(
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight(700),
+                        color = MaterialTheme.colorScheme.onBackground,
+                    )
+                )
 
                 Row(modifier = Modifier.padding(4.dp)) {
                     Image(

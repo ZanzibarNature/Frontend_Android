@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 import com.kawatrainingcenter.zanzibarnature.ui.helper.IconType
+import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 import com.kawatrainingcenter.zanzibarnature.ui.theme.ZanzibarNatureTheme
 
 @Composable
@@ -128,12 +129,21 @@ fun LocationDetail(
             modifier = Modifier.padding(16.dp)
         )
 
-        if(location.kawa != "" && location.kawa?.isNotEmpty() == true) {
+        if (location.kawa != "" && location.kawa?.isNotEmpty() == true) {
             KawaDescription(description = "${location.kawa}", onClick = navigateToContribute)
         }
 
         Button(
-            modifier = Modifier.padding(bottom = 20.dp),
+            modifier = Modifier
+                .padding(bottom = 20.dp)
+                .customShadow(
+                    color = Color.Black.copy(0.4f),
+                    borderRadius = 5.dp,
+                    blurRadius = 4.dp,
+                    offsetX = 2.dp,
+                    offsetY = 8.dp,
+                    spread = 0.dp
+                ),
             onClick = { uriHandler.openUri(location.location) },
             colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.secondary),
             shape = RoundedCornerShape(size = 5.dp)
