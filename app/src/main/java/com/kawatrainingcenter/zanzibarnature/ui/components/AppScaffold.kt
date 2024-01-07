@@ -173,7 +173,8 @@ fun AppScaffoldTopBarNavigation(
                 Icon(
                     painter = painterResource(R.drawable.baseline_arrow_circle_left_24),
                     contentDescription = stringResource(R.string.navigate_back_description),
-                    tint = MaterialTheme.colorScheme.onPrimary
+                    tint = MaterialTheme.colorScheme.onPrimary,
+                    modifier = Modifier.size(35.dp)
                 )
             }
         }
