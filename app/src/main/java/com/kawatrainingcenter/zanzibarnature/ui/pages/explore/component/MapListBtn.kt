@@ -32,6 +32,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
+import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 import com.kawatrainingcenter.zanzibarnature.ui.theme.ZanzibarNatureTheme
 
 @Composable
@@ -51,14 +52,16 @@ fun MapListBtn(
         contentPadding = PaddingValues(0.dp),
         modifier = Modifier
             .padding(0.dp)
-            .shadow(
-                elevation = 6.dp,
-                spotColor = Color(0x40000000),
-                ambientColor = Color(0x40000000),
-                shape = RoundedCornerShape(20.dp)
-            )
             .width(208.dp)
             .height(45.dp)
+            .customShadow(
+                color = Color.Black.copy(0.8f),
+                borderRadius = 20.dp,
+                blurRadius = 6.dp,
+                offsetX = 0.dp,
+                offsetY = 6.dp,
+                spread = 0.dp
+            )
     ) {
         Text(
             text = "${stringResource(R.string.ListView)}  ",
@@ -72,12 +75,12 @@ fun MapListBtn(
                 .background(MaterialTheme.colorScheme.secondary)
                 .height(40.dp)
                 .width(105.dp)
-                .offset(x = 18.dp, y = 6.dp)
+                .offset(x = 16.dp, y = 6.dp)
             else Modifier
                 .offset(x = (-5).dp)
                 .height(40.dp)
                 .width(105.dp)
-                .offset(x = 18.dp, y = 6.dp)
+                .offset(x = 16.dp, y = 6.dp)
         )
         
         Text(

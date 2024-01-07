@@ -81,7 +81,7 @@ fun FlightDropdown(
                         onChange(it)
                     }
 
-                    expanded = if (text.length > 4) {
+                    expanded = if (text.length > 3) {
                         airports?.isNotEmpty() == true
                     } else false
                 },

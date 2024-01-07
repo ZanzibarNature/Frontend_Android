@@ -36,6 +36,8 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.comp
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airport
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.CompensationState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.component.ChooseAmount
+import java.text.NumberFormat
+import java.util.Locale
 import kotlin.math.roundToInt
 
 @Composable
@@ -51,12 +53,19 @@ fun CalculatorPage(
 
     val scrollState = rememberScrollState()
 
+    fun formatNumber(number: Int): String {
+        val format = NumberFormat.getNumberInstance(Locale.GERMANY)
+        return format.format(number)
+    }
+
     AppScaffold(
         title = "Contribute",
         navController = navController,
         navigation = NavigationType.Back { navController.popBackStack() }
     ) {
-        Column(modifier = Modifier.padding(it).verticalScroll(scrollState), verticalArrangement = Arrangement.SpaceBetween) {
+        Column(modifier = Modifier
+            .padding(it)
+            .verticalScroll(scrollState), verticalArrangement = Arrangement.SpaceBetween) {
 
             Row (horizontalArrangement = Arrangement.SpaceBetween) {
                 Text(
@@ -140,12 +149,14 @@ fun CalculatorPage(
                             enteredAmount = enteredAmount,
                             onChange = { data -> viewModel.updateEntered(data) }
                         )
+                        
+                        Spacer(modifier = Modifier.padding(55.dp))
 
                         DefaultBtn(
                             onClick = { uriHandler.openUri("https://www.paypal.com/donate?token=-DWIqPILgSa-E_sf6a_0Of6mlyzPOP0_bczmXNt2GMBlEjZit0zo0XYeYXzmyGiVhgpiBM6VVv4PY0Rg")},
                             enabled = enteredAmount != 0,
                             text =
-                            if(enteredAmount != 0) "${stringResource(R.string.donate)} ${stringResource(R.string.currency_symbol)}$enteredAmount"
+                            if(enteredAmount != 0) "${stringResource(R.string.donate)} ${stringResource(R.string.currency_symbol)}${formatNumber(enteredAmount)}"
                             else stringResource(R.string.donate)
                         )
                     }

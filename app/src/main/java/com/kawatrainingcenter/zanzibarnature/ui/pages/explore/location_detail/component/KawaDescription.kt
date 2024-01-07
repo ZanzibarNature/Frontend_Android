@@ -31,6 +31,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
+import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 
 @Composable
 fun KawaDescription(
@@ -79,12 +80,15 @@ fun KawaDescription(
                 modifier = Modifier
                     .width(210.dp)
                     .height(40.dp)
-                    .shadow(
-                        elevation = 4.dp,
-                        spotColor = Color(0x4D000000),
-                        ambientColor = Color(0x4D000000)
-                    )
                     .padding(0.dp)
+                    .customShadow(
+                        color = Color.Black.copy(0.4f),
+                        borderRadius = 5.dp,
+                        blurRadius = 6.dp,
+                        offsetX = 2.dp,
+                        offsetY = 8.dp,
+                        spread = 0.dp
+                    )
             )
             {
                 Text(

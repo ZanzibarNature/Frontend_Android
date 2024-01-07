@@ -1,9 +1,7 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.component
 
-import android.graphics.drawable.ShapeDrawable
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,7 +21,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
@@ -62,11 +59,10 @@ fun LocationDetail(
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
-            .padding(bottom = 20.dp)
             .verticalScroll(rememberScrollState())
     ) {
 
-        Box(modifier = Modifier) {
+        Box {
             ImageSlider(images = location.images)
 
             Row(
@@ -137,6 +133,7 @@ fun LocationDetail(
         }
 
         Button(
+            modifier = Modifier.padding(bottom = 20.dp),
             onClick = { uriHandler.openUri(location.location) },
             colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.secondary),
             shape = RoundedCornerShape(size = 5.dp)

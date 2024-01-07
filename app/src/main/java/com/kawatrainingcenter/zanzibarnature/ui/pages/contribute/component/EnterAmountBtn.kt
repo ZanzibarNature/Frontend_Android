@@ -39,6 +39,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
+import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 import java.text.NumberFormat
 import java.util.Locale
 
@@ -95,11 +96,6 @@ fun EnterAmountBtn(
                 )
                 .width(175.dp)
                 .height(75.dp)
-                .shadow(
-                    elevation = 0.dp,
-                    spotColor = Color(0x4D000000),
-                    ambientColor = Color(0x4D000000)
-                )
         )
     } else {
         Button(
@@ -124,10 +120,13 @@ fun EnterAmountBtn(
                 )
                 .width(175.dp)
                 .height(75.dp)
-                .shadow(
-                    elevation = 3.dp,
-                    spotColor = Color(0x4D000000),
-                    ambientColor = Color(0x4D000000)
+                .customShadow(
+                    color = Color.Black.copy(0.8f),
+                    borderRadius = 5.dp,
+                    blurRadius = 6.dp,
+                    offsetX = 4.dp,
+                    offsetY = 6.dp,
+                    spread = 0.dp
                 ),
         ) {
             Row(

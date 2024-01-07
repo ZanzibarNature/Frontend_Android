@@ -17,8 +17,7 @@ fun ErrorMessage(
     message: String? = null) {
     Box(
         modifier = modifier
-            .fillMaxSize()
-            .padding(8.dp),
+            .padding(100.dp),
         contentAlignment = Alignment.Center
     ) {
         Text(message ?: stringResource(R.string.error_text))

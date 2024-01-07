@@ -34,15 +34,21 @@ class ExploreListViewModel @Inject constructor(
     val locations: StateFlow<LocationsState> = _locations
 
     init {
-        fetchLocations()
+        fetchLocations(sortType = "")
         fetchFavorites()
     }
 
-    private fun fetchLocations() {
+    fun fetchLocations(sortType: String) {
         _locations.value = LocationsState.Loading
 
         kawaRepository.getLocations()
-            .onSuccess { _locations.value = locationsStateMapper.map(it.locations) }
+            .onSuccess {
+                val locations = if(sortType == "") it.locations
+                    else { it.locations.filter { location ->
+                    location.icons.contains(sortType) }
+                }
+                _locations.value = locationsStateMapper.map(locations)
+            }
             .getOrElse {
                 _locations.value = LocationsState.Error(
                     it.message ?: context.getString(R.string.error_message)

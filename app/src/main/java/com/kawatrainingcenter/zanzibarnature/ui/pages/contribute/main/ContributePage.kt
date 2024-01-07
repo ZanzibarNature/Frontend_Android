@@ -45,6 +45,14 @@ fun ContributePage(
                     ProjectsState.Loading -> LoadingIndicator()
 
                     is ProjectsState.Success -> {
+
+                        Box {
+                            ProjectList(
+                                projects = state.projects,
+                                onProjectClick = { name -> onProjectClick(name) }
+                            )
+                        }
+
                         Text(
                             text = stringResource(R.string.our_projects),
                             style = TextStyle(
@@ -54,12 +62,6 @@ fun ContributePage(
                             ),
                             modifier = Modifier.padding(12.dp)
                         )
-                        Box(modifier = Modifier.padding(top = 44.dp)) {
-                            ProjectList(
-                                projects = state.projects,
-                                onProjectClick = { name -> onProjectClick(name) }
-                            )
-                        }
                     }
 
                     is ProjectsState.Error -> ErrorMessage(message = state.message)

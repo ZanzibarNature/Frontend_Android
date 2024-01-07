@@ -91,9 +91,11 @@ fun DonatePage(
                                 label = stringResource(R.string.calculate_co2),
                                 isActive = false
                             )
-                        }
+                            Spacer(modifier = Modifier.padding(10.dp))
 
-                        //Spacer(modifier = Modifier.padding(50.dp))
+                        } else {
+                            Spacer(modifier = Modifier.padding(55.dp))
+                        }
 
                         DefaultBtn(
                             onClick = { uriHandler.openUri("https://www.paypal.com/donate?token=-DWIqPILgSa-E_sf6a_0Of6mlyzPOP0_bczmXNt2GMBlEjZit0zo0XYeYXzmyGiVhgpiBM6VVv4PY0Rg")},

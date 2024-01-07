@@ -16,6 +16,7 @@ import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.component.MapListBtn
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.ExploreListViewModel
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.SortingBubbleList
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_map.component.OpenStreetMap
 
@@ -34,6 +35,19 @@ fun ExploreMapPage(
                 is LocationsState.Success -> {
                     Box {
                         OpenStreetMap(locations = state.locations)
+
+                        Column(
+                            modifier = Modifier
+                                .align(Alignment.TopCenter)
+                                .padding(bottom = 16.dp)
+                        ) {
+                            SortingBubbleList(onClick = { sortType ->
+                                viewModel.fetchLocations(
+                                    sortType
+                                )
+                            })
+                        }
+
                         Column(
                             modifier = Modifier
                                 .align(Alignment.BottomCenter)

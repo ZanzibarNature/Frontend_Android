@@ -52,6 +52,15 @@ fun DashboardPage(
 
                 is LocationsState.Success -> {
 
+
+                    Box {
+                        LocationList(
+                            locations = state.locations,
+                            onLocationClick = { id -> onLocationClick(id) },
+                            favorites = emptySet()
+                        )
+                    }
+
                     Text(
                         text = stringResource(R.string.saved_locations),
                         style = TextStyle(
@@ -61,13 +70,6 @@ fun DashboardPage(
                         ),
                         modifier = Modifier.padding(start = 12.dp, top = 12.dp)
                     )
-                    Box (modifier = Modifier.padding(top = 38.dp)){
-                        LocationList(
-                            locations = state.locations,
-                            onLocationClick = { id -> onLocationClick(id) },
-                            favorites = emptySet()
-                        )
-                    }
                 }
 
                 is LocationsState.Error -> ErrorMessage(message = state.message)

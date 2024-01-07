@@ -1,6 +1,7 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.component
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
@@ -15,7 +16,7 @@ fun ProjectList(
     onProjectClick: (String) -> Unit
 ) {
     Box {
-        LazyColumn {
+        LazyColumn (contentPadding = PaddingValues(top = 50.dp, bottom = 100.dp)) {
             items(projects.count()) {
                 val item = projects[it]
                 ProjectCard(

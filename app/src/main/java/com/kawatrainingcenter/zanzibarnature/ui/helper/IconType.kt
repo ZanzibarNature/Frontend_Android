@@ -12,7 +12,7 @@ sealed class IconType(
     )
 
     object Swim : IconType(
-        name = "swim",
+        name = "swimming",
         icon = R.drawable.swim
     )
 
@@ -22,17 +22,17 @@ sealed class IconType(
     )
 
     object Monkey : IconType(
-        name = "monkey",
+        name = "wildlife",
         icon = R.drawable.monkey
     )
 
     object Tour : IconType(
-        name = "tour",
+        name = "guided tour",
         icon = R.drawable.baseline_attach_money_24
     )
 
     object Kawa : IconType(
-        name = "kawa",
+        name = "project",
         icon = R.drawable.kawalogoabstract
     )
 

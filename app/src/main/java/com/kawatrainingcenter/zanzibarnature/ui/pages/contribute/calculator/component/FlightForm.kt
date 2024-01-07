@@ -14,6 +14,7 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -24,6 +25,7 @@ import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.button.DefaultBtn
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airport
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airports
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.component.MapListBtn
 
 @Composable
 fun FlightForm(
@@ -78,7 +80,7 @@ fun FlightForm(
             onChange = { tickets = it }
         )
 
-        Spacer(modifier = Modifier.padding(8.dp))
+        Spacer(modifier = Modifier.padding(50.dp))
 
         DefaultBtn(
             onClick = { onClick(fromAirport!!, toAirport!!, tickets, oneway) },

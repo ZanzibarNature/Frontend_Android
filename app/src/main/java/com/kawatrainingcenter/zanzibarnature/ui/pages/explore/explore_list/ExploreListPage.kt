@@ -2,6 +2,7 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -21,6 +22,7 @@ import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicat
 import com.kawatrainingcenter.zanzibarnature.ui.helper.LifeCycleHandler
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.component.MapListBtn
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.LocationList
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.SortingBubbleList
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
 
 @Composable
@@ -50,11 +52,13 @@ fun ExploreListPage(
 
                 is LocationsState.Success -> {
                     Box {
-                        LocationList(
-                            locations = state.locations,
-                            onLocationClick = { id -> onLocationClick(id) },
-                            favorites = favorites
-                        )
+                        Column {
+                            LocationList(
+                                locations = state.locations,
+                                onLocationClick = { id -> onLocationClick(id) },
+                                favorites = favorites
+                            )
+                        }
 
                         Column(
                             modifier = Modifier
@@ -66,6 +70,19 @@ fun ExploreListPage(
                                 map = false
                             )
                         }
+
+                        Column(
+                            modifier = Modifier
+                                .align(Alignment.TopCenter)
+                                .padding(bottom = 16.dp)
+                        ) {
+                            SortingBubbleList(onClick = { sortType ->
+                                viewModel.fetchLocations(
+                                    sortType
+                                )
+                            })
+                        }
+
                     }
                 }
 

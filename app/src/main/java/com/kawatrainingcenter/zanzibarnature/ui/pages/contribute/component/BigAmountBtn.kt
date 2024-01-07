@@ -22,6 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
+import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 
 @Composable
 fun BigAmountBtn(
@@ -46,10 +47,13 @@ fun BigAmountBtn(
                 color = MaterialTheme.colorScheme.background,
                 shape = RoundedCornerShape(size = 5.dp)
             )
-            .shadow(
-                elevation = if (isActive) 0.dp else 3.dp,
-                spotColor = Color(0x4D000000),
-                ambientColor = Color(0x4D000000)
+            .customShadow(
+                color = if(isActive) Color.Transparent else Color.Black.copy(0.8f),
+                borderRadius = 5.dp,
+                blurRadius = 6.dp,
+                offsetX = 4.dp,
+                offsetY = 6.dp,
+                spread = 0.dp
             ),
         colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.background),
         contentPadding = PaddingValues(0.dp)
