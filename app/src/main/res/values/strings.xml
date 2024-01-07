@@ -48,4 +48,5 @@
     <string name="destination">destination</string>
     <string name="kawa">Kawa</string>
     <string name="contribute_want">Want to contribute?</string>
+    <string name="clear_icon">Clear Button</string>
 </resources>

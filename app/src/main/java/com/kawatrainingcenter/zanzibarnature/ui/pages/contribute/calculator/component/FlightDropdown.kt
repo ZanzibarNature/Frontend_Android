@@ -8,10 +8,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Clear
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -50,10 +54,11 @@ fun FlightDropdown(
     var expanded by remember { mutableStateOf(false) }
     var selectedAirport by remember { mutableStateOf<Airport?>(null) }
     var text by remember { mutableStateOf("") }
+
     val focusManager = LocalFocusManager.current
     val focusRequester = remember { FocusRequester() }
 
-    Column (modifier = Modifier.padding(start = 16.dp, end = 16.dp,  bottom = 4.dp, top = 8.dp)) {
+    Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp, top = 8.dp)) {
         Text(
             text = "${type.capitalize()} ${stringResource(R.string.airport)}",
         )
@@ -81,6 +86,13 @@ fun FlightDropdown(
                     } else false
 
                 },
+                trailingIcon = {
+                    if (text.isNotEmpty()) {
+                        IconButton(onClick = { text = "" }) {
+                            Icon(Icons.Default.Clear, contentDescription = stringResource(R.string.clear_icon))
+                        }
+                    }
+                },
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Text,
@@ -90,13 +102,7 @@ fun FlightDropdown(
                     onNext = { focusManager.moveFocus(FocusDirection.Down) }
                 ),
                 placeholder = {
-                    Text(
-                        text = "${stringResource(R.string.Choose)} $type ${
-                            stringResource(
-                                R.string.airport
-                            )
-                        }"
-                    )
+                    Text(text = "${stringResource(R.string.Choose)} $type ${stringResource(R.string.airport)}")
                 },
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = MaterialTheme.colorScheme.onTertiary,
