@@ -55,6 +55,15 @@ android {
 }
 
 dependencies {
+    //xml cardview custom info window
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    //loading asyncimage into xml imageview
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
     //shared preferences
     implementation("androidx.datastore:datastore-preferences-rxjava2:1.0.0")
     implementation("androidx.datastore:datastore-preferences-rxjava3:1.0.0")
@@ -63,7 +72,7 @@ dependencies {
     implementation("io.coil-kt:coil:2.5.0")
 
     //Open Street Map
-    implementation ("org.osmdroid:osmdroid-android:6.1.17")
+    implementation("org.osmdroid:osmdroid-android:6.1.17")
 
     //pager (used for image slider)
     implementation("com.google.accompanist:accompanist-pager:0.23.1")

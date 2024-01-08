@@ -48,15 +48,16 @@ fun MapListBtn(
             isMap = !isMap
         },
         colors = ButtonDefaults.buttonColors(containerColor = Color.White),
-        border = BorderStroke(2.dp, MaterialTheme.colorScheme.onSecondary),
+        //border = BorderStroke(2.dp, MaterialTheme.colorScheme.onSecondary),
         contentPadding = PaddingValues(0.dp),
+        shape = RoundedCornerShape(5.dp),
         modifier = Modifier
             .padding(0.dp)
             .width(208.dp)
             .height(45.dp)
             .customShadow(
                 color = Color.Black.copy(0.8f),
-                borderRadius = 20.dp,
+                borderRadius = 5.dp,
                 blurRadius = 6.dp,
                 offsetX = 0.dp,
                 offsetY = 6.dp,
@@ -64,43 +65,42 @@ fun MapListBtn(
             )
     ) {
         Text(
-            text = "${stringResource(R.string.ListView)}  ",
+            text = stringResource(R.string.ListView),
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight(400),
-                color = if (!isMap) MaterialTheme.colorScheme.onSecondary else MaterialTheme.colorScheme.onBackground.copy(0.25f)
+                color = if (!isMap) MaterialTheme.colorScheme.onTertiary else MaterialTheme.colorScheme.onBackground.copy(0.6f)
             ),
             modifier = if (!isMap) Modifier
-                .offset(x = (-5).dp)
-                .background(MaterialTheme.colorScheme.secondary)
-                .height(40.dp)
+                .offset(x = (-4).dp)
+                .background(MaterialTheme.colorScheme.tertiary)
+                .height(45.dp)
                 .width(105.dp)
-                .offset(x = 16.dp, y = 6.dp)
+                .offset(x = 16.dp, y = 8.dp)
             else Modifier
-                .offset(x = (-5).dp)
-                .height(40.dp)
+                .offset(x = (-4).dp)
+                .height(45.dp)
                 .width(105.dp)
-                .offset(x = 16.dp, y = 6.dp)
+                .offset(x = 16.dp, y = 8.dp)
         )
         
         Text(
-            text = "  ${stringResource(R.string.MapView)}",
+            text = stringResource(R.string.MapView),
             style = TextStyle(
                 fontSize = 18.sp,
                 fontWeight = FontWeight(400),
-                color = if (isMap) MaterialTheme.colorScheme.onSecondary else MaterialTheme.colorScheme.onBackground.copy(0.25f)
+                color = if (isMap) MaterialTheme.colorScheme.onTertiary else MaterialTheme.colorScheme.onBackground.copy(0.6f)
             ),
             modifier = if (isMap) Modifier
-                .offset(x = (-2).dp)
-                .background(MaterialTheme.colorScheme.secondary)
-                .height(40.dp)
+                .background(MaterialTheme.colorScheme.tertiary)
+                .height(45.dp)
                 .width(110.dp)
-                .offset(y = 6.dp)
+                .offset(y = 8.dp, x = 10.dp)
             else Modifier
-                .offset(x = (-2).dp)
-                .height(40.dp)
+                .offset(x = 6.dp)
+                .height(45.dp)
                 .width(110.dp)
-                .offset(y = 6.dp)
+                .offset(y = 8.dp)
         )
 
     }

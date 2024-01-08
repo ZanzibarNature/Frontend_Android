@@ -23,7 +23,8 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_map.compon
 @Composable
 fun ExploreMapPage(
     viewModel: ExploreListViewModel = hiltViewModel(),
-    navController: NavController
+    navController: NavController,
+    onLocationClick: (Int) -> Unit
 ) {
     val locations by viewModel.locations.collectAsState()
 
@@ -34,7 +35,7 @@ fun ExploreMapPage(
 
                 is LocationsState.Success -> {
                     Box {
-                        OpenStreetMap(locations = state.locations)
+                        OpenStreetMap(locations = state.locations, onClick = {id -> onLocationClick(id)})
 
                         Column(
                             modifier = Modifier

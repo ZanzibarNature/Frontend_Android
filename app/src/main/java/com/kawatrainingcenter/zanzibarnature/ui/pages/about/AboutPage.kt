@@ -38,7 +38,7 @@ fun AboutPage(
     val uriHandler = LocalUriHandler.current
     val scrollState = rememberScrollState()
 
-    AppScaffold(title = "About", navController = navController)
+    AppScaffold(title = stringResource(R.string.about), navController = navController)
     {
         Box(
             modifier = Modifier

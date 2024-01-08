@@ -35,7 +35,7 @@ fun ContributePage(
 ) {
     val projects by viewModel.projects.collectAsState()
 
-    AppScaffold(title = "Contribute", navController = navController)
+    AppScaffold(title = stringResource(R.string.contribute), navController = navController)
     {
         Box(
             modifier = Modifier

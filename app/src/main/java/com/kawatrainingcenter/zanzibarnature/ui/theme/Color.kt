@@ -5,7 +5,7 @@ import androidx.compose.ui.graphics.Color
 val light_primary = Color(0xFF6A7F1B)
 val light_on_background = Color(0xFF000000)
 val light_on_primary = Color(0xFFE3E7D1)
-val light_secondary = Color(0xFFDDF2C9)
+val light_secondary = Color(0xFFEAFFD7)
 val light_on_secondary = Color(0xFF4E600A)
 val light_tertiary = Color(0xFFEDC002)
 val light_on_tertiary = Color(0xFF000000)

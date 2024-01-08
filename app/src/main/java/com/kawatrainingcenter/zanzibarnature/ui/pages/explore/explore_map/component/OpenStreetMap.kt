@@ -21,17 +21,18 @@ import org.osmdroid.views.overlay.Marker
 
 @Composable
 fun OpenStreetMap(
-    locations: List<Location>
+    locations: List<Location>,
+    onClick: (Int) -> Unit
 ) {
     val context = LocalContext.current
     val mapView = rememberMapView(context)
-    
+
     AndroidView(
         modifier = Modifier.fillMaxSize(),
         factory = { mapView }
     )
     SideEffect {
-        updateMapView(mapView, locations, context)
+        updateMapView(mapView, locations, context, onClick = {id -> onClick(id)})
     }
 }
 
@@ -48,13 +49,20 @@ fun rememberMapView(context: Context): MapView {
     }
 }
 
-fun updateMapView(mapView: MapView, locations: List<Location>, context: Context) {
+fun updateMapView(
+    mapView: MapView,
+    locations: List<Location>,
+    context: Context,
+    onClick: (Int) -> Unit
+) {
     mapView.overlays.clear()
     locations.forEach { location ->
         val marker = Marker(mapView)
+        marker.infoWindow =
+            CustomInfoWindow(mapView, location, context, onClick = { onClick(location.id) })
         marker.apply {
             position = GeoPoint(location.coords[0], location.coords[1])
-            icon = ResourcesCompat.getDrawable(context.resources, R.drawable.pin_green, null )
+            icon = ResourcesCompat.getDrawable(context.resources, R.drawable.pin_green, null)
             title = location.title
             setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         }

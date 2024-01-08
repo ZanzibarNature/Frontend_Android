@@ -1,21 +1,56 @@
 <resources>
     <string name="app_name">Zanzibar Nature</string>
 
+    <string name="kawa_foundation">The Kawa Foundation</string>
+    <string name="kawa">Kawa</string>
+
     Kawa Foundation Information
+    <string name="kawa_foundation_text">The Kawa Foundation aims to preserve cultural, environmental and historical heritage of Zanzibar. We educate students in the tourism industry.</string>
     <string name="visit_us">Come visit us (Mo-Fri 9am-5pm):</string>
     <string name="address_kawa">Kiponda Street Zanzibar TZ, 3612, Tanzania</string>
     <string name="kawa_phone_number">+255777957995</string>
     <string name="kawa_email">info@kawatrainingcenter.com</string>
 
-
-    <string name="label_explore">Explore</string>
-    <string name="navigate_back_description">Navigate back</string>
-    <string name="currency_symbol">€</string>
+    Page Titles
+    <string name="explore">Explore</string>
     <string name="donate">Donate</string>
+    <string name="location">Location</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="about">About</string>
+    <string name="contribute">Contribute</string>
+
+    Titles
+    <string name="saved_locations">Saved locations</string>
+    <string name="choose_amount">Choose Amount</string>
+    <string name="our_projects">Our Projects</string>
+    <string name="contact">Contact</string>
+
+    Button Text
+    <string name="ListView">List View</string>
+    <string name="MapView">Map View</string>
+    <string name="contribute_want">Want to contribute?</string>
+    <string name="show_in_google_maps">Show on Google Maps</string>
     <string name="enter_amount">Enter Amount</string>
     <string name="calculate_co2">Calculate by your flight’s CO2 emissions</string>
+    <string name="save">Save</string>
+    <string name="saved">Saved</string>
+
+    Localized
+    <string name="currency_symbol">€</string>
+
+    Error
     <string name="general_unknown_error">Unknown Error</string>
     <string name="error_text">Something went wrong…</string>
+    <string name="error_message">Unknown Error</string>
+
+    CO2 Calculator
+    <string name="return_flight">Return Flight</string>
+    <string name="departing">departing</string>
+    <string name="destination">destination</string>
+    <string name="clear_icon">Clear Button</string>
+    <string name="calculator_explanation">This tool will show you how much you could donate, so the Kawa Foundation will plant the right amount of trees to compensate your CO2.</string>
+    <string name="calculated_amount">"Calculated Amount: "</string>
+    <string name="calculated_donation_explained">"With this amount, enough trees will be planted to offset your flight's CO₂ emissions. We're happy with every donation so please feel free to change the amount!"</string>
     <string name="airport">airport</string>
     <string name="Choose">Choose</string>
     <string name="amount_of_tickets">Amount of tickets</string>
@@ -23,31 +58,14 @@
     <string name="co2_calculator">CO₂ Calculator</string>
     <string name="airplane_icon">Icon of airplane</string>
     <string name="calculated">calculated by CO₂ emissions</string>
-    <string name="show_in_google_maps">Show on Google Maps</string>
-    <string name="error_message">Unknown Error</string>
-    <string name="ListView">List View</string>
-    <string name="MapView">Map View</string>
-    <string name="explore">Explore</string>
 
 
-    <string name="save">Save</string>
-    <string name="saved">Saved</string>
+    Content Descriptions
+    <string name="navigate_back_description">Navigate back</string>
     <string name="Favourite_desc">Add this location to favorites</string>
-    <string name="saved_locations">Saved locations</string>
-    <string name="calculator_explanation">This tool will show you how much you could donate, so the Kawa Foundation will plant the right amount of trees to compensate your CO2.</string>
-    <string name="calculated_amount">"Calculated Amount: "</string>
-    <string name="calculated_donation_explained">"With this amount, enough trees will be planted to offset your flight's CO₂ emissions. We're happy with every donation so please feel free to change the amount!"</string>
-    <string name="choose_amount">Choose Amount</string>
-    <string name="our_projects">Our Projects</string>
     <string name="favourite_location">This location is your favourite</string>
-    <string name="kawa_foundation">The Kawa Foundation</string>
-    <string name="kawa_foundation_text">The Kawa Foundation aims to preserve cultural, environmental and historical heritage of Zanzibar. We educate students in the tourism industry.</string>
 
-    <string name="return_flight">Return Flight</string>
-    <string name="departing">departing</string>
-    <string name="destination">destination</string>
-    <string name="kawa">Kawa</string>
-    <string name="contribute_want">Want to contribute?</string>
-    <string name="clear_icon">Clear Button</string>
-    <string name="contact">Contact</string>
+    New:
+
+
 </resources>

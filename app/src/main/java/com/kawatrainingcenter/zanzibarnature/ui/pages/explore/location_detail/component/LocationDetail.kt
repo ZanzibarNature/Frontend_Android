@@ -36,6 +36,7 @@ import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 import com.kawatrainingcenter.zanzibarnature.ui.helper.IconType
+import com.kawatrainingcenter.zanzibarnature.ui.helper.TouristActivities
 import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 import com.kawatrainingcenter.zanzibarnature.ui.theme.ZanzibarNatureTheme
 
@@ -46,14 +47,7 @@ fun LocationDetail(
     onClickFavourite: () -> Unit,
     navigateToContribute: () -> Unit
 ) {
-    val icons = listOf(
-        IconType.Hiking,
-        IconType.Swim,
-        IconType.Photo,
-        IconType.Monkey,
-        IconType.Tour,
-        IconType.Kawa
-    )
+    val activities = TouristActivities()
 
     val uriHandler = LocalUriHandler.current
 
@@ -108,7 +102,7 @@ fun LocationDetail(
         )
 
         Row(modifier = Modifier.padding(start = 4.dp)) {
-            icons.forEach { icon ->
+            activities.icons.forEach { icon ->
                 if (location.icons.contains(icon.name)) {
                     Box(modifier = Modifier.padding(end = 8.dp, start = 8.dp, top = 2.dp)) {
                         Icon(

@@ -47,7 +47,8 @@ fun AppNavigation() {
 
             composable("explore_map") {
                 ExploreMapPage(
-                    navController = navController
+                    navController = navController,
+                    onLocationClick = { navController.navigate("location_detail/${it}") }
                 )
             }
 

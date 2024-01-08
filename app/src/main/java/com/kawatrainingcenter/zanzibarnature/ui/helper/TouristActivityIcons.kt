@@ -2,6 +2,17 @@ package com.kawatrainingcenter.zanzibarnature.ui.helper
 
 import com.kawatrainingcenter.zanzibarnature.R
 
+
+data class TouristActivities(
+    val icons: List<IconType> = listOf(
+        IconType.Hiking,
+        IconType.Swim,
+        IconType.Photo,
+        IconType.Monkey,
+        IconType.Tour,
+        IconType.Kawa)
+)
+
 sealed class IconType(
     val name: String,
     val icon: Int,

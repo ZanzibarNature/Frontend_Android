@@ -74,7 +74,7 @@ class mockData @Inject constructor() {
                     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fuploads-ssl.webflow.com%2F564479b70e1de1484e3e6973%2F5e0f1782a58dff16637ddc4a_8%2520Reasons%2520Why%2520Nungwi%2520Beach%2520Is%2520A%2520Top%2520Tourist%2520Destination.%2520The%2520Z%2520Hotel.jpg&f=1&nofb=1&ipt=90f88c6df8b6c006052cf31346b3d544866edbe2cb6c1f93c56f3ef9df0c055c&ipo=images",
                     "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.beach-on-map.com%2Fimg%2F7%2Fzanzibar-island-nungwi-beach-rocks-orig.jpg&f=1&nofb=1&ipt=6d662dbbf298e4dad9e5a916a528b24656100dcf2f8623cab36d046099660f45&ipo=images"
                 ),
-                icons = listOf("hiking", "photo", "swimming", "project"),
+                icons = listOf("photo", "swimming", "project"),
                 location = "https://maps.app.goo.gl/gNobBCCybvivuWiaA",
                 coords = listOf(-5.723657836087891, 39.29504563899864)
             ),
@@ -114,7 +114,7 @@ class mockData @Inject constructor() {
                     "https://lh5.googleusercontent.com/p/AF1QipP3pv-rnu3WiCR_3m8jJHqldY2JCvV8SVsLrBvZ=w513-h240-k-no",
                     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fpix10.agoda.net%2FhotelImages%2F564%2F564664%2F564664_14092616380022436437.jpg%3Fs%3D1024x768&f=1&nofb=1&ipt=bc8511757be5290fef387b0c6897fcab60c7b8017464562d2b642176938ee658&ipo=images"
                 ),
-                icons = listOf("hiking", "photo", "wildlife"),
+                icons = listOf("photo", "swimming"),
                 location = "https://maps.app.goo.gl/gNobBCCybvivuWiaA",
                 coords = listOf(-6.050332487709873, 39.41048626088673)
             ),

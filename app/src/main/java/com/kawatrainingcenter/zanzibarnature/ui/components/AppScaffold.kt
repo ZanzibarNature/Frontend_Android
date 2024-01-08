@@ -123,7 +123,6 @@ fun AppScaffold(
                             Icon(
                                 painterResource(id = screen.icon),
                                 contentDescription = screen.label,
-                                tint = MaterialTheme.colorScheme.onPrimary,
                                 modifier = Modifier.size(30.dp)
                             )
                         },
@@ -131,11 +130,10 @@ fun AppScaffold(
                             Text(
                                 screen.label,
                                 fontSize = 12.sp,
-                                color = MaterialTheme.colorScheme.onPrimary
                             )
                         },
                         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
-                        unselectedContentColor = MaterialTheme.colorScheme.onPrimary.copy(0.5f),
+                        unselectedContentColor = MaterialTheme.colorScheme.onPrimary.copy(0.6f),
                         selectedContentColor = MaterialTheme.colorScheme.onPrimary,
                         onClick = {
                             navController.navigate(screen.route) {

@@ -44,7 +44,7 @@ fun DashboardPage(
         }
     }
 
-    AppScaffold(title = "Dashboard", navController = navController) {
+    AppScaffold(title = stringResource(R.string.dashboard), navController = navController) {
         Box(modifier = Modifier.padding(it)) {
 
             when (val state = locations) {

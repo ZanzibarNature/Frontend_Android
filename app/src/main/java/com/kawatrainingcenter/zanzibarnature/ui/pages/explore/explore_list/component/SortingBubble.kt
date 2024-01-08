@@ -21,6 +21,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.ui.helper.IconType
+import com.kawatrainingcenter.zanzibarnature.ui.helper.TouristActivities
 import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 
 @Composable
@@ -30,38 +31,26 @@ fun SortingBubble(
     isClicked: Boolean,
     onClick: () -> Unit
 ) {
-    val icons = listOf(
-        IconType.Hiking,
-        IconType.Swim,
-        IconType.Monkey,
-        IconType.Tour,
-        IconType.Kawa
-    )
+    val activities = TouristActivities()
 
     Button(
         onClick = onClick,
-        contentPadding = PaddingValues(start = 8.dp, end = 8.dp),
+        contentPadding = PaddingValues(start = 10.dp, end = 10.dp),
         colors = ButtonDefaults.buttonColors(
             if (isClicked) Color.White else MaterialTheme.colorScheme.secondary
         ),
         shape = RoundedCornerShape(size = 20.dp),
         modifier = Modifier
-//            .shadow(
-//                elevation = 4.dp,
-//                spotColor = Color(0x80000000),
-//                ambientColor = Color(0x80000000),
-//                shape = RoundedCornerShape(size = 20.dp),
-//            )
             .height(45.dp)
             .padding(4.dp)
             .wrapContentWidth()
             .customShadow(
-                color = Color.Black.copy(0.8f),
-                borderRadius = 20.dp,
-                blurRadius = 4.dp,
+                color = if(isClicked) Color.Transparent else Color.Black.copy(0.5f),
+                borderRadius = 15.dp,
+                blurRadius = 2.dp,
                 offsetX = 0.dp,
-                offsetY = 6.dp,
-                spread = (-4).dp
+                offsetY = 5.5.dp,
+                spread = (-2).dp
             )
 
     )
@@ -71,17 +60,17 @@ fun SortingBubble(
             style = TextStyle(
                 fontSize = 16.sp,
                 fontWeight = if (isClicked) FontWeight(700) else FontWeight(500),
-                color = MaterialTheme.colorScheme.primary,
+                color = MaterialTheme.colorScheme.onSecondary,
             )
         )
 
         Spacer(modifier = Modifier.padding(2.dp))
-        icons.forEach { icon ->
+        activities.icons.forEach { icon ->
             if (icon.name == iconName) {
                 Icon(
                     painter = painterResource(id = icon.icon),
                     contentDescription = icon.name,
-                    tint = MaterialTheme.colorScheme.primary,
+                    tint = MaterialTheme.colorScheme.onSecondary,
                     modifier = Modifier
                         .height(25.dp)
                         .width(25.dp)

@@ -59,7 +59,7 @@ fun CalculatorPage(
     }
 
     AppScaffold(
-        title = "Contribute",
+        title = stringResource(R.string.contribute),
         navController = navController,
         navigation = NavigationType.Back { navController.popBackStack() }
     ) {

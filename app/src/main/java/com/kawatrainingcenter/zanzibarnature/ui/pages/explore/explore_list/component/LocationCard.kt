@@ -19,7 +19,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -32,7 +31,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
-import com.kawatrainingcenter.zanzibarnature.ui.helper.IconType
+import com.kawatrainingcenter.zanzibarnature.ui.helper.TouristActivities
 import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -43,14 +42,7 @@ fun LocationCard(
     isFavourite: Boolean
 ) {
 
-    val icons = listOf(
-        IconType.Hiking,
-        IconType.Swim,
-        IconType.Photo,
-        IconType.Monkey,
-        IconType.Tour,
-        IconType.Kawa
-    )
+    val activities = TouristActivities()
 
     Card(
         onClick = onClick,
@@ -107,7 +99,7 @@ fun LocationCard(
                 )
 
                 Row(modifier = Modifier.padding(start = 4.dp)) {
-                    icons.forEach { icon ->
+                    activities.icons.forEach { icon ->
                         if (location.icons.contains(icon.name)) {
                             Icon(
                                 painter = painterResource(id = icon.icon),
