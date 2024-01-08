@@ -39,8 +39,10 @@ fun NumberField(
         TextField(
             value = if (number == "0") "" else number,
             onValueChange = {
-                number = it.filter { num -> num.isDigit() }
-                if(number != "") onChange( number.toInt() ) else onChange(0)
+                if(it.length < 5) {
+                    number = it.filter { num -> num.isDigit() }
+                    if(number != "") onChange( number.toInt() ) else onChange(0)
+                }
             },
             singleLine = true,
             keyboardOptions = KeyboardOptions(

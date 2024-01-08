@@ -18,6 +18,8 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
+import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
+import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
 @Composable
 fun OpenStreetMap(
@@ -32,6 +34,8 @@ fun OpenStreetMap(
         factory = { mapView }
     )
     SideEffect {
+        mapView.overlays.clear()
+        updateGpsLocation(mapView, context)
         updateMapView(mapView, locations, context, onClick = {id -> onClick(id)})
     }
 }
@@ -55,7 +59,6 @@ fun updateMapView(
     context: Context,
     onClick: (Int) -> Unit
 ) {
-    mapView.overlays.clear()
     locations.forEach { location ->
         val marker = Marker(mapView)
         marker.infoWindow =
@@ -69,4 +72,12 @@ fun updateMapView(
         mapView.overlays.add(marker)
     }
     mapView.invalidate()
+}
+fun updateGpsLocation(
+    mapView: MapView,
+    context: Context
+) {
+    val myLocationOverlay = MyLocationNewOverlay(GpsMyLocationProvider(context), mapView)
+    myLocationOverlay.enableMyLocation()
+    mapView.overlays.add(myLocationOverlay)
 }

@@ -45,8 +45,7 @@ class mockData @Inject constructor() {
                 description = "We organise a beach clean up every month with the students of the Kawa Training Center.",
                 image = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.undp.org%2Fsites%2Fg%2Ffiles%2Fzskgke326%2Ffiles%2Fmigration%2Fgh%2FUNDP_Ghana_Beach_Clean_Up--1.jpg&f=1&nofb=1&ipt=3af44fb347becaa3f4c41803391cc561004bb8fd875fe82e86084c775d62469a&ipo=images"
             ),
-
-            )
+        )
     )
 
     private val locations = LocationsEntity(
@@ -98,8 +97,9 @@ class mockData @Inject constructor() {
                 description = "Masingini Forest proves it. It’s a large forest close to the city, this allows you to reach it without making big trips. You can go on a nice hike among red monkeys and ancient trees. You can access it for free although, to explore the greater forest in a safe way, it is highly recommended to pay a full guided tour.",
                 kawa = "",
                 images = listOf(
-                    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fres.cloudinary.com%2Fgrohealth%2Fimage%2Fupload%2Fv1583756529%2FDCUK%2FContent%2FiStock-577978980.jpg&f=1&nofb=1&ipt=a66fd4a0fc52465d7c95450e9a76b44a44afa274f6e1fd9bb4603aea0a8365ca&ipo=images",
-                    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.anansi.fr%2Fwp-content%2Fuploads%2F2020%2F04%2Fisland-4948796_1920.jpg&f=1&nofb=1&ipt=e92d5023e43dfb64504b9d8ee6470ceca756b9a0e6eb23e5d8342b0989780bfb&ipo=images"
+                    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffishermantours.com%2Fwp-content%2Fuploads%2F2021%2F06%2FMasingini-Tour.jpg&f=1&nofb=1&ipt=cd60aaf8e31f1af96065d262d2779a8402e501bac35bb87a27f0d72803b39ee5&ipo=images",
+                    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fsafarijunkie.com%2Fwp-content%2Fuploads%2F2016%2F04%2Fjozani-forest-tour-zanzibar-mangrove-boarwalk.jpg&f=1&nofb=1&ipt=337bed86f5c8edccc2d7fc9ee0e1f39b629256545af1b0b6dbfb93812ccb7260&ipo=images",
+                    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffishermantours.com%2Fwp-content%2Fuploads%2F2022%2F02%2FJozani-Forest-Fisherman-Tours-1.png&f=1&nofb=1&ipt=66197cc99ce2777aae4478911991f346a9a4f4996e898257bfc9f6dafb08ac55&ipo=images"
                 ),
                 icons = listOf("hiking", "photo", "wildlife", "guided tour"),
                 location = "https://maps.app.goo.gl/gNobBCCybvivuWiaA",
