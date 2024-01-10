@@ -3,6 +3,7 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.dashboard
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -22,6 +23,7 @@ import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
+import com.kawatrainingcenter.zanzibarnature.ui.components.text.HeaderText
 import com.kawatrainingcenter.zanzibarnature.ui.helper.LifeCycleHandler
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.LocationList
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
@@ -37,7 +39,7 @@ fun DashboardPage(
     LifeCycleHandler { _, event ->
         when (event) {
             Lifecycle.Event.ON_RESUME -> {
-                viewModel.loadPage()
+                viewModel.reloadFavourites()
             }
 
             else -> {}
@@ -52,7 +54,6 @@ fun DashboardPage(
 
                 is LocationsState.Success -> {
 
-
                     Box {
                         LocationList(
                             locations = state.locations,
@@ -61,14 +62,9 @@ fun DashboardPage(
                         )
                     }
 
-                    Text(
-                        text = stringResource(R.string.saved_locations),
-                        style = TextStyle(
-                            fontSize = 20.sp,
-                            fontWeight = FontWeight(700),
-                            color = MaterialTheme.colorScheme.onBackground,
-                        ),
-                        modifier = Modifier.padding(start = 12.dp, top = 12.dp)
+                    HeaderText(
+                        stringResource(R.string.saved_locations),
+                        PaddingValues(start = 12.dp, top = 12.dp)
                     )
                 }
 

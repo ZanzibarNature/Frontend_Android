@@ -31,9 +31,10 @@ class CalculatorViewModel @Inject constructor(
     private val mutableAirport = MutableStateFlow<List<Airport>?>(null)
     val airportState: StateFlow<List<Airport>?> = mutableAirport
 
+    //Gets all existing airports from a json file
     private val gson = Gson()
     private val airportType = object : TypeToken<List<Airport>>() {}.type
-    private val airportsJson = getJsonDataFromAsset(context, "airports.json")
+    private val airportsJson = getJsonDataFromAsset(context)
     private val airports: List<Airport> = gson.fromJson(airportsJson, airportType)
 
     private val mutableEntered = MutableStateFlow(0)
@@ -63,10 +64,10 @@ class CalculatorViewModel @Inject constructor(
             }
     }
 
-    private fun getJsonDataFromAsset(context: Context, fileName: String): String {
+    private fun getJsonDataFromAsset(context: Context): String {
         val jsonString: String
         try {
-            jsonString = context.assets.open(fileName).bufferedReader().use { it.readText() }
+            jsonString = context.assets.open("airports.json").bufferedReader().use { it.readText() }
         } catch (ioException: IOException) {
             ioException.printStackTrace()
             return ""

@@ -57,26 +57,6 @@ fun AppNavigation() {
                 arguments = listOf(
                     navArgument("location_id") { type = NavType.IntType }
                 ),
-//                enterTransition = {
-//                    fadeIn(
-//                        animationSpec = tween(
-//                            300, easing = LinearEasing
-//                        )
-//                    ) + slideIntoContainer(
-//                        animationSpec = tween(300, easing = EaseIn),
-//                        towards = AnimatedContentTransitionScope.SlideDirection.Start
-//                    )
-//                },
-//                exitTransition = {
-//                    fadeOut(
-//                        animationSpec = tween(
-//                            300, easing = LinearEasing
-//                        )
-//                    ) + slideOutOfContainer(
-//                        animationSpec = tween(300, easing = EaseOut),
-//                        towards = AnimatedContentTransitionScope.SlideDirection.End
-//                    )
-//                }
             ) {
                 LocationDetailPage(
                     navController = navController

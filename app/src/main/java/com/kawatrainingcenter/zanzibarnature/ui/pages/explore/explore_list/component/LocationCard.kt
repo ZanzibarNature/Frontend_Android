@@ -117,7 +117,7 @@ fun LocationCard(
                     modifier = Modifier.padding(start = 8.dp, bottom = 2.dp),
                     text = location.description,
                     maxLines = 5,
-                    overflow = TextOverflow.Clip,
+                    overflow = TextOverflow.Ellipsis,
                     style = TextStyle(
                         fontSize = 14.sp,
                         fontWeight = FontWeight(400),

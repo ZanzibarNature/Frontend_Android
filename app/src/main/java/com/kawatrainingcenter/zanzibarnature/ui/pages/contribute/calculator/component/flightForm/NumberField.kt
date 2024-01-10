@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.component
+package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.component.flightForm
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth

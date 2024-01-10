@@ -3,9 +3,9 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.helper.FavouriteStore
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.repository.KawaRepository
@@ -19,7 +19,7 @@ import kotlinx.coroutines.launch
 
 
 @HiltViewModel
-class ExploreListViewModel @Inject constructor(
+class ExploreViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val kawaRepository: KawaRepository,
     private val locationsStateMapper: LocationsStateMapper
@@ -30,24 +30,33 @@ class ExploreListViewModel @Inject constructor(
     private val _favourites = MutableStateFlow<Set<Int>>(emptySet())
     val favourites: StateFlow<Set<Int>> = _favourites
 
+    private val locationsFetched = MutableStateFlow<List<Location>>(emptyList())
+
     private val _locations = MutableStateFlow<LocationsState>(LocationsState.Loading)
     val locations: StateFlow<LocationsState> = _locations
 
     init {
-        fetchLocations(sortType = "")
+        fetchLocations()
         fetchFavorites()
     }
 
-    fun fetchLocations(sortType: String) {
+    fun filterLocations(sortType: String) {
+        val filteredLocations = if(sortType == "") locationsFetched.value
+        else {
+            locationsFetched.value.filter { location ->
+            location.icons.contains(sortType) }
+        }
+
+        _locations.value = locationsStateMapper.map(filteredLocations)
+    }
+
+    private fun fetchLocations() {
         _locations.value = LocationsState.Loading
 
         kawaRepository.getLocations()
             .onSuccess {
-                val locations = if(sortType == "") it.locations
-                    else { it.locations.filter { location ->
-                    location.icons.contains(sortType) }
-                }
-                _locations.value = locationsStateMapper.map(locations)
+                locationsFetched.value = it.locations
+                _locations.value = locationsStateMapper.map(it.locations)
             }
             .getOrElse {
                 _locations.value = LocationsState.Error(

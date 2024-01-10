@@ -1,8 +1,9 @@
-package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.component
+package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.component.chooseAmount
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -24,8 +25,9 @@ import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 
 @Composable
-fun AmountButton(
-    amount: Int,
+fun BigAmountBtn(
+    id: Int = 0,
+    label: String,
     isActive: Boolean,
     onClick: () -> Unit
 ) {
@@ -33,13 +35,13 @@ fun AmountButton(
         onClick = onClick,
         shape =  RoundedCornerShape(size = 5.dp),
         modifier = Modifier
-            .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp)
+            .padding(start = 8.dp, end = 8.dp, top = 8.dp, bottom = 8.dp)
             .border(
                 width = if (isActive) 2.5.dp else 1.5.dp,
                 color = if (isActive) MaterialTheme.colorScheme.tertiary else MaterialTheme.colorScheme.onBackground,
                 shape = RoundedCornerShape(size = 5.dp)
             )
-            .width(75.dp)
+            .fillMaxWidth(0.965f)
             .height(75.dp)
             .background(
                 color = MaterialTheme.colorScheme.background,
@@ -58,11 +60,10 @@ fun AmountButton(
     ) {
         Text(
             modifier = Modifier.align(Alignment.CenterVertically),
-            text = "${stringResource(R.string.currency_symbol)}${amount.toString()}",
-            fontSize = 18.sp,
+            text = label,
+            fontSize = 17.sp,
             color = MaterialTheme.colorScheme.onBackground,
             fontWeight = if(isActive) FontWeight(600) else FontWeight.Normal
         )
     }
-
 }

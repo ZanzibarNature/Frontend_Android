@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -29,13 +30,17 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
+import com.kawatrainingcenter.zanzibarnature.ui.components.button.GoogleMapsButton
+import com.kawatrainingcenter.zanzibarnature.ui.components.text.HeaderText
+import com.kawatrainingcenter.zanzibarnature.ui.components.text.ParagraphText
+import com.kawatrainingcenter.zanzibarnature.ui.components.text.SmallHeaderText
 import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
+import com.kawatrainingcenter.zanzibarnature.ui.pages.about.component.ContactInfo
 
 @Composable
 fun AboutPage(
     navController: NavController
 ) {
-    val uriHandler = LocalUriHandler.current
     val scrollState = rememberScrollState()
 
     AppScaffold(title = stringResource(R.string.about), navController = navController)
@@ -46,126 +51,39 @@ fun AboutPage(
                 .verticalScroll(scrollState)
         ) {
             Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    text = stringResource(R.string.kawa_foundation),
-                    style = TextStyle(
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight(700),
-                        color = MaterialTheme.colorScheme.onBackground,
-                    ),
+                //Kawa Information
+                HeaderText(stringResource(R.string.kawa_foundation))
+
+                ParagraphText(
+                    stringResource(R.string.kawa_foundation_text),
+                    padding = PaddingValues(bottom = 16.dp)
                 )
 
-                Text(
-                    text = stringResource(R.string.kawa_foundation_text),
-                    style = TextStyle(
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight(400),
-                        color = MaterialTheme.colorScheme.onBackground,
-                    ),
-                    modifier = Modifier.padding(bottom = 16.dp)
+                //Address
+                SmallHeaderText(stringResource(R.string.visit_us))
+
+                ParagraphText(
+                    stringResource(R.string.address_kawa),
+                    PaddingValues(bottom = 4.dp)
                 )
 
-                Text(
-                    text = stringResource(R.string.visit_us),
-                    style = TextStyle(
-                        fontSize = 17.sp,
-                        fontWeight = FontWeight(700),
-                        color = MaterialTheme.colorScheme.onBackground,
-                    )
-                )
-                Text(
-                    text = stringResource(R.string.address_kawa),
-                    style = TextStyle(
-                        fontSize = 17.sp,
-                        fontWeight = FontWeight(400),
-                        color = MaterialTheme.colorScheme.onBackground,
-                    ),
-                    modifier = Modifier.padding(bottom = 4.dp)
+                GoogleMapsButton("https://maps.app.goo.gl/B7XkkG7axUhHDnDy9")
+
+                //Contact Info
+                HeaderText(stringResource(R.string.contact))
+
+                ContactInfo(
+                    icon = R.drawable.phone,
+                    info = stringResource(R.string.kawa_phone_number),
+                    padding = PaddingValues(4.dp)
                 )
 
-                Button(
-                    onClick = { uriHandler.openUri("https://maps.app.goo.gl/B7XkkG7axUhHDnDy9") },
-                    colors = ButtonDefaults.buttonColors(MaterialTheme.colorScheme.secondary),
-                    shape = RoundedCornerShape(size = 5.dp),
-                    modifier = Modifier
-                        .padding(bottom = 16.dp)
-                        .customShadow(
-                            color = Color.Black.copy(0.4f),
-                            borderRadius = 5.dp,
-                            blurRadius = 4.dp,
-                            offsetX = 2.dp,
-                            offsetY = 8.dp,
-                            spread = 0.dp
-                        ),
-                ) {
-                    Text(
-                        text = stringResource(R.string.show_in_google_maps),
-                        style = TextStyle(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight(700),
-                            color = MaterialTheme.colorScheme.onSecondary
-                        )
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.mapsicon),
-                        contentDescription = "google maps icon",
-                        contentScale = ContentScale.FillHeight,
-                        modifier = Modifier
-                            .padding(start = 8.dp)
-                            .width(22.dp)
-                            .height(27.dp)
-                    )
-                }
-
-                Text(
-                    text = stringResource(R.string.contact),
-                    style = TextStyle(
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight(700),
-                        color = MaterialTheme.colorScheme.onBackground,
-                    )
+                ContactInfo(
+                    icon = R.drawable.mail,
+                    info = stringResource(R.string.kawa_email),
+                    padding = PaddingValues(4.dp)
                 )
-
-                Row(modifier = Modifier.padding(4.dp)) {
-                    Image(
-                        painter = painterResource(id = R.drawable.phone),
-                        contentDescription = "",
-                        contentScale = ContentScale.None
-                    )
-
-                    Text(
-                        text = stringResource(R.string.kawa_phone_number),
-                        style = TextStyle(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight(400),
-                            color = MaterialTheme.colorScheme.onBackground,
-                        ),
-                        modifier = Modifier.padding(start = 8.dp)
-                    )
-                }
-
-                Row(modifier = Modifier.padding(4.dp)) {
-                    Image(
-                        painter = painterResource(id = R.drawable.mail),
-                        contentDescription = "",
-                        contentScale = ContentScale.None
-                    )
-
-                    Text(
-                        text = stringResource(R.string.kawa_email),
-                        style = TextStyle(
-                            fontSize = 16.sp,
-                            fontWeight = FontWeight(400),
-                            color = MaterialTheme.colorScheme.onBackground,
-                        ),
-                        modifier = Modifier.padding(start = 8.dp)
-                    )
-                }
-
-
             }
-
         }
     }
-
 }

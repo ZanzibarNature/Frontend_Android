@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.helper.FavouriteStore
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.repository.KawaRepository
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsStateMapper
@@ -24,27 +25,36 @@ class DasboardViewModel @Inject constructor(
 ) : ViewModel() {
     private val store = FavouriteStore(context)
 
+    private val locationsFetched = MutableStateFlow<List<Location>>(emptyList())
+
     private val _locations = MutableStateFlow<LocationsState>(LocationsState.Loading)
     val locations: StateFlow<LocationsState> = _locations
 
     init {
-        loadPage()
+        viewModelScope.launch { fetchLocations() }
     }
 
-    fun loadPage() {
-        viewModelScope.launch {fetchLocations() }
+    fun reloadFavourites() {
+        viewModelScope.launch { filterLocations() }
+    }
+
+    private suspend fun filterLocations() {
+        val favourites = store.getFavouriteIds.first()
+
+        val locations = locationsFetched.value.filter { location ->
+            favourites.contains(location.id)
+        }
+
+        _locations.value = locationsStateMapper.map(locations)
     }
 
     private suspend fun fetchLocations() {
         _locations.value = LocationsState.Loading
-        val favourites = store.getFavouriteIds.first()
 
         kawaRepository.getLocations()
             .onSuccess {
-                val locations = it.locations.filter { location ->
-                    favourites.contains(location.id)
-                }
-                _locations.value = locationsStateMapper.map(locations)
+                locationsFetched.value = it.locations
+                filterLocations()
             }
             .getOrElse {
                 _locations.value = LocationsState.Error(

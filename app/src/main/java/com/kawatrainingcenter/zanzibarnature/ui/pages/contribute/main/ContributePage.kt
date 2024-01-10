@@ -3,6 +3,7 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -23,6 +24,7 @@ import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
+import com.kawatrainingcenter.zanzibarnature.ui.components.text.HeaderText
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.component.ProjectList
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.state.ProjectsState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.LocationList
@@ -53,14 +55,9 @@ fun ContributePage(
                             )
                         }
 
-                        Text(
-                            text = stringResource(R.string.our_projects),
-                            style = TextStyle(
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight(700),
-                                color = MaterialTheme.colorScheme.onBackground,
-                            ),
-                            modifier = Modifier.padding(12.dp)
+                        HeaderText(
+                            stringResource(R.string.our_projects),
+                            PaddingValues(12.dp)
                         )
                     }
 

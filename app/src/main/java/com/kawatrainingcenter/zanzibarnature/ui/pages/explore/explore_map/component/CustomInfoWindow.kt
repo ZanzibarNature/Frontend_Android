@@ -1,11 +1,9 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_map.component
 
 import android.content.Context
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.cardview.widget.CardView
 import com.bumptech.glide.Glide
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location

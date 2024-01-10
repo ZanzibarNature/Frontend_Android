@@ -14,7 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import com.kawatrainingcenter.zanzibarnature.ui.helper.IconType
+import com.kawatrainingcenter.zanzibarnature.ui.helper.TouristActivities
 
 @Composable
 fun SortingBubbleList(
@@ -23,13 +23,7 @@ fun SortingBubbleList(
     val scrollState = rememberScrollState()
     var isClicked by remember { mutableStateOf("") }
 
-    val icons = listOf(
-        IconType.Hiking,
-        IconType.Swim,
-        IconType.Monkey,
-        IconType.Tour,
-        IconType.Kawa
-    )
+    val activities = TouristActivities()
 
     Row(
         modifier = Modifier
@@ -38,7 +32,7 @@ fun SortingBubbleList(
             .horizontalScroll(scrollState)
             .background(Color.Transparent)
     ) {
-        icons.forEach() { icon ->
+        activities.icons.forEach() { icon ->
             SortingBubble(
                 type = icon.name,
                 iconName = icon.name,

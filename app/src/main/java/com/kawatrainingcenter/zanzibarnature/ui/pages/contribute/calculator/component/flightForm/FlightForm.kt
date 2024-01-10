@@ -1,4 +1,4 @@
-package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.component
+package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.component.flightForm
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,7 +14,6 @@ import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -25,7 +24,6 @@ import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.button.DefaultBtn
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airport
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airports
-import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.component.MapListBtn
 
 @Composable
 fun FlightForm(

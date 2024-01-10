@@ -15,14 +15,14 @@ import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.component.MapListBtn
-import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.ExploreListViewModel
+import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.ExploreViewModel
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.SortingBubbleList
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_map.component.OpenStreetMap
 
 @Composable
 fun ExploreMapPage(
-    viewModel: ExploreListViewModel = hiltViewModel(),
+    viewModel: ExploreViewModel = hiltViewModel(),
     navController: NavController,
     onLocationClick: (Int) -> Unit
 ) {
@@ -43,7 +43,7 @@ fun ExploreMapPage(
                                 .padding(bottom = 16.dp)
                         ) {
                             SortingBubbleList(onClick = { sortType ->
-                                viewModel.fetchLocations(
+                                viewModel.filterLocations(
                                     sortType
                                 )
                             })
