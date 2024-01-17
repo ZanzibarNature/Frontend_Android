@@ -7,25 +7,18 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
-import com.kawatrainingcenter.zanzibarnature.ui.components.button.DefaultBtn
 import com.kawatrainingcenter.zanzibarnature.ui.components.button.DonateButton
-import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
+import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorDialog
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.components.text.HeaderText
 import com.kawatrainingcenter.zanzibarnature.ui.components.text.ParagraphText
@@ -35,8 +28,6 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.comp
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airport
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.CompensationState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.component.chooseAmount.ChooseAmount
-import java.text.NumberFormat
-import java.util.Locale
 import kotlin.math.roundToInt
 
 @Composable
@@ -68,8 +59,8 @@ fun CalculatorPage(
                 CompensationState.NotClicked -> {
                     Column {
                         ParagraphText(
-                            stringResource(R.string.calculator_explanation),
-                            PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp)
+                            text = stringResource(R.string.calculator_explanation),
+                            padding = PaddingValues(start = 16.dp, end = 16.dp, bottom = 16.dp)
                         )
 
                         FlightForm(
@@ -94,8 +85,8 @@ fun CalculatorPage(
                         )
 
                         ParagraphText(
-                            stringResource(R.string.calculated_donation_explained),
-                            PaddingValues(start = 16.dp, end = 16.dp, top = 2.dp, bottom = 2.dp)
+                            text = stringResource(R.string.calculated_donation_explained),
+                            padding = PaddingValues(start = 16.dp, end = 16.dp, top = 2.dp, bottom = 2.dp)
                         )
 
                         ChooseAmount(
@@ -110,7 +101,10 @@ fun CalculatorPage(
                     }
                 }
 
-                is CompensationState.Error -> ErrorMessage(message = state.message)
+                is CompensationState.Error -> ErrorDialog(
+                    message = state.message,
+                    retry = { viewModel.setCompensationState() }
+                )
             }
         }
     }

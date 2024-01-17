@@ -13,18 +13,18 @@ import com.kawatrainingcenter.zanzibarnature.ui.components.text.ParagraphText
 
 @Composable
 fun ContactInfo(
+    modifier: Modifier = Modifier,
     icon: Int,
     info: String,
-    padding: PaddingValues
 
 ) {
-    Row(modifier = Modifier.padding(padding)) {
+    Row(modifier = modifier) {
         Image(
             painter = painterResource(icon),
             contentDescription = "",
             contentScale = ContentScale.None
         )
 
-        ParagraphText((info), PaddingValues(start = 4.dp))
+        ParagraphText(text = info, padding = PaddingValues(start = 4.dp))
     }
 }

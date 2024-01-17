@@ -39,7 +39,9 @@ class LocationDetailViewModel @Inject constructor(
 
     private val store = FavouriteStore(context)
 
-    init {
+    init { loadPage() }
+
+    fun loadPage() {
         viewModelScope.launch {
             savedStateHandle.getStateFlow("location_id", -1)
                 .collectLatest { id ->

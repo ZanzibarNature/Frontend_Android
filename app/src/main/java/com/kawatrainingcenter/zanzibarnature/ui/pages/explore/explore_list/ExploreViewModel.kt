@@ -35,7 +35,9 @@ class ExploreViewModel @Inject constructor(
     private val _locations = MutableStateFlow<LocationsState>(LocationsState.Loading)
     val locations: StateFlow<LocationsState> = _locations
 
-    init {
+    init { loadPage() }
+
+    fun loadPage() {
         fetchLocations()
         fetchFavorites()
     }

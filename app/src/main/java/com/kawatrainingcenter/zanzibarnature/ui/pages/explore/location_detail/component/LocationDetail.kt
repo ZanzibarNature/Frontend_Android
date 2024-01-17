@@ -82,8 +82,8 @@ fun LocationDetail(
 
         //Description
         ParagraphText(
-            location.description,
-            PaddingValues(16.dp)
+            text = location.description,
+            padding = PaddingValues(16.dp)
         )
 
         //If this is a kawa project, then show what Kawa does here

@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun ParagraphText(
+    modifier: Modifier = Modifier,
     text: String,
     padding: PaddingValues = PaddingValues(0.dp)
 ) {
@@ -23,6 +24,6 @@ fun ParagraphText(
             fontWeight = FontWeight(400),
             color = MaterialTheme.colorScheme.onBackground,
         ),
-        modifier = Modifier.padding(padding)
+        modifier = modifier.padding(padding)
     )
 }

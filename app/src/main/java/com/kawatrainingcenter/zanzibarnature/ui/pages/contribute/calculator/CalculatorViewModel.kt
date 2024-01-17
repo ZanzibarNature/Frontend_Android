@@ -40,6 +40,10 @@ class CalculatorViewModel @Inject constructor(
     private val mutableEntered = MutableStateFlow(0)
     val entered: StateFlow<Int> = mutableEntered
 
+    fun setCompensationState() {
+        mutableState.value = CompensationState.NotClicked
+    }
+
     fun updateEntered(amount: Int) {
         mutableEntered.tryEmit(amount)
     }

@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
-import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
+import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorDialog
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.component.MapListBtn
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.ExploreViewModel
@@ -35,7 +35,9 @@ fun ExploreMapPage(
 
                 is LocationsState.Success -> {
                     Box {
-                        OpenStreetMap(locations = state.locations, onClick = {id -> onLocationClick(id)})
+                        OpenStreetMap(
+                            locations = state.locations,
+                            onClick = { id -> onLocationClick(id) })
 
                         Column(
                             modifier = Modifier
@@ -54,12 +56,18 @@ fun ExploreMapPage(
                                 .align(Alignment.BottomCenter)
                                 .padding(bottom = 16.dp)
                         ) {
-                            MapListBtn(onClick = { navController.navigate("explore_list") }, map = true)
+                            MapListBtn(
+                                onClick = { navController.navigate("explore_list") },
+                                map = true
+                            )
                         }
                     }
                 }
 
-                is LocationsState.Error -> ErrorMessage(message = state.message)
+                is LocationsState.Error -> ErrorDialog(
+                    message = state.message,
+                    retry = { viewModel.loadPage() }
+                )
             }
         }
     }

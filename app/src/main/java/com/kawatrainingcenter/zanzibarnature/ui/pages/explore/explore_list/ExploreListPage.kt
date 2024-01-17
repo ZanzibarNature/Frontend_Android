@@ -13,7 +13,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.NavController
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
-import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
+import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorDialog
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.helper.LifeCycleHandler
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.component.MapListBtn
@@ -82,7 +82,10 @@ fun ExploreListPage(
                     }
                 }
 
-                is LocationsState.Error -> ErrorMessage(message = state.message)
+                is LocationsState.Error -> ErrorDialog(
+                    message = state.message,
+                    retry = { viewModel.loadPage() }
+                )
             }
         }
     }

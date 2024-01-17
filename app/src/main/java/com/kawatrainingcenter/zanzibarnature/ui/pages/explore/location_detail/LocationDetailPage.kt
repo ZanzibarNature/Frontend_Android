@@ -1,19 +1,17 @@
 package com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
-import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorMessage
+import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorDialog
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.navigation.NavigationType
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.component.LocationDetail
@@ -51,7 +49,10 @@ fun LocationDetailPage(
 
                 }
 
-                is LocationState.Error -> ErrorMessage(message = state.message)
+                is LocationState.Error -> ErrorDialog(
+                    message = state.message,
+                    retry = { viewModel.loadPage() }
+                )
             }
         }
     }

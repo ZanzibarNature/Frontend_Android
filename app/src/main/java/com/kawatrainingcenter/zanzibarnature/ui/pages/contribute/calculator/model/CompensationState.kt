@@ -12,5 +12,5 @@ sealed class CompensationState {
 
     object NotClicked: CompensationState()
 
-    data class Error(val message: String): CompensationState()
+    data class Error(val message: String? = null): CompensationState()
 }

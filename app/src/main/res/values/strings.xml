@@ -40,7 +40,7 @@
 
     Error
     <string name="general_unknown_error">Unknown Error</string>
-    <string name="error_text">Something went wrong…</string>
+    <string name="error_text">Something went wrong...</string>
     <string name="error_message">Unknown Error</string>
 
     CO2 Calculator
@@ -64,6 +64,13 @@
     <string name="navigate_back_description">Navigate back</string>
     <string name="Favourite_desc">Add this location to favorites</string>
     <string name="favourite_location">This location is your favourite</string>
+    <string name="copy">Copy</string>
+    <string name="call">Call</string>
+    <string name="send_mail">Open in Mail</string>
+    <string name="retry">Retry</string>
+    <string name="unknown_error">Unknown Error\n</string>
+    <string name="try_again">Please try again</string>
+    <string name="close">Close</string>
 
     New:
 
