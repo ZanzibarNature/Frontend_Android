@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
@@ -14,7 +15,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -31,18 +31,18 @@ fun ErrorDialog(
     val openDialog = remember { mutableStateOf(false) }
 
     AlertDialog(
-        onDismissRequest = { openDialog.value = true },
+        onDismissRequest = { openDialog.value = false },
         text = {
             Column {
-               Row {
-                   Image(
-                       painter = painterResource(R.drawable.baseline_error_24),
-                       contentDescription = "",
-                       contentScale = ContentScale.None,
-                       modifier = Modifier.padding(end = 8.dp)
-                   )
-                   SmallHeaderText(text = stringResource(R.string.error_text))
-               }
+                Row {
+                    Image(
+                        painter = painterResource(R.drawable.baseline_error_24),
+                        contentDescription = "",
+                        contentScale = ContentScale.None,
+                        modifier = Modifier.padding(end = 8.dp)
+                    )
+                    SmallHeaderText(text = stringResource(R.string.error_text))
+                }
 
                 Spacer(modifier = Modifier.padding(4.dp))
 
@@ -56,20 +56,14 @@ fun ErrorDialog(
         confirmButton = {
             Button(
                 onClick = retry,
-                colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colorScheme.tertiary,
-                    contentColor = MaterialTheme.colorScheme.onTertiary)
-                ) {
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = MaterialTheme.colorScheme.tertiary,
+                    contentColor = MaterialTheme.colorScheme.onTertiary
+                ),
+                modifier = Modifier.width(150.dp)
+            ) {
                 Text(text = stringResource(R.string.retry))
             }
         },
-        dismissButton = {
-            Button(
-                onClick = { openDialog.value = false },
-                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Black,
-                    contentColor = Color.White)
-            ) {
-                Text(text = stringResource(R.string.close))
-            }
-        }
     )
 }
