@@ -33,8 +33,6 @@ fun DonatePage(
     navController: NavController,
     viewModel: DonateViewModel = hiltViewModel()
 ) {
-    val uriHandler = LocalUriHandler.current
-
     val enteredAmount by viewModel.entered.collectAsState()
     val project by viewModel.project.collectAsState()
 
@@ -84,7 +82,9 @@ fun DonatePage(
                     }
                 }
 
-                is ProjectState.Error -> ErrorDialog(message = state.message)
+                is ProjectState.Error -> ErrorDialog(
+                    message = state.message,
+                    retry = { viewModel.loadPage() })
             }
 
         }

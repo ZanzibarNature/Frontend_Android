@@ -33,26 +33,28 @@ fun ContributePage(
             modifier = Modifier
                 .padding(it)
         ) {
-                when (val state = projects) {
-                    ProjectsState.Loading -> LoadingIndicator()
+            when (val state = projects) {
+                ProjectsState.Loading -> LoadingIndicator()
 
-                    is ProjectsState.Success -> {
+                is ProjectsState.Success -> {
 
-                        Box {
-                            ProjectList(
-                                projects = state.projects,
-                                onProjectClick = { name -> onProjectClick(name) }
-                            )
-                        }
-
-                        HeaderText(
-                            stringResource(R.string.our_projects),
-                            PaddingValues(12.dp)
+                    Box {
+                        ProjectList(
+                            projects = state.projects,
+                            onProjectClick = { id -> onProjectClick(id) }
                         )
                     }
 
-                    is ProjectsState.Error -> ErrorDialog(message = state.message)
+                    HeaderText(
+                        stringResource(R.string.our_projects),
+                        PaddingValues(12.dp)
+                    )
                 }
+
+                is ProjectsState.Error -> ErrorDialog(
+                    message = state.message,
+                    retry = { viewModel.loadPage() })
+            }
         }
     }
 }

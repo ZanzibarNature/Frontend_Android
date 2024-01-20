@@ -24,7 +24,7 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 @Composable
 fun OpenStreetMap(
     locations: List<Location>,
-    onClick: (Int) -> Unit
+    onClick: (String) -> Unit
 ) {
     val context = LocalContext.current
     val mapView = rememberMapView(context)
@@ -57,14 +57,14 @@ fun updateMapView(
     mapView: MapView,
     locations: List<Location>,
     context: Context,
-    onClick: (Int) -> Unit
+    onClick: (String) -> Unit
 ) {
     locations.forEach { location ->
         val marker = Marker(mapView)
         marker.infoWindow =
             CustomInfoWindow(mapView, location, context, onClick = { onClick(location.id) })
         marker.apply {
-            position = GeoPoint(location.coords[0], location.coords[1])
+            position = GeoPoint(location.latitude, location.longitude)
             icon = ResourcesCompat.getDrawable(context.resources, R.drawable.pin_green, null)
             title = location.title
             setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)

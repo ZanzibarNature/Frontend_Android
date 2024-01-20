@@ -32,10 +32,14 @@ class DonateViewModel @Inject constructor(
     val project: StateFlow<ProjectState> = _project
 
     init {
+       loadPage()
+    }
+
+    fun loadPage() {
         viewModelScope.launch {
             savedStateHandle.getStateFlow("project_name", "")
-                .collectLatest { name ->
-                    fetchProject(name = name)
+                .collectLatest { id ->
+                    fetchProject(id)
                 }
         }
     }
@@ -44,10 +48,10 @@ class DonateViewModel @Inject constructor(
         mutableEntered.value = amount
     }
 
-    private fun fetchProject(name: String) {
+    private suspend fun fetchProject(id: String) {
         _project.value = ProjectState.Loading
 
-        kawaRepository.getProject(name = name)
+        kawaRepository.getProject(id)
             .onSuccess { _project.value = projectStateMapper.map(it) }
             .getOrElse {
                 _project.value = ProjectState.Error(

@@ -25,7 +25,7 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state
 fun ExploreListPage(
     viewModel: ExploreViewModel = hiltViewModel(),
     navController: NavController,
-    onLocationClick: (Int) -> Unit
+    onLocationClick: (String) -> Unit
 ) {
     val locations by viewModel.locations.collectAsState()
     val favorites by viewModel.favourites.collectAsState()

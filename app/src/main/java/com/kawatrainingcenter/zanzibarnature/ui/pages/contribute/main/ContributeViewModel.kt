@@ -2,6 +2,7 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main
 
 import android.content.Context
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.repository.KawaRepository
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.main.state.ProjectsState
@@ -10,6 +11,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -23,10 +25,16 @@ class ContributeViewModel @Inject constructor(
     val projects: StateFlow<ProjectsState> = _projects
 
     init {
-        fetchProjects()
+        loadPage()
     }
 
-    private fun fetchProjects() {
+    fun loadPage() {
+        viewModelScope.launch {
+            fetchProjects()
+        }
+    }
+
+    private suspend fun fetchProjects() {
         _projects.value = ProjectsState.Loading
 
         kawaRepository.getProjects()

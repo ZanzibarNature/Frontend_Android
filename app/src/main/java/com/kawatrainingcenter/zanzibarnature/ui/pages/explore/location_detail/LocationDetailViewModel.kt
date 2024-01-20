@@ -4,11 +4,9 @@ import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.kawatrainingcenter.zanzibarnature.R
-import com.kawatrainingcenter.zanzibarnature.data.kawaApi.helper.FavouriteStore
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.store.FavouriteStore
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.repository.KawaRepository
-import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.state.LocationState
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.state.LocationStateMapper
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -31,8 +29,8 @@ class LocationDetailViewModel @Inject constructor(
     private val _location = MutableStateFlow<LocationState>(LocationState.Loading)
     val location: StateFlow<LocationState> = _location
 
-    private val _favourites = MutableStateFlow<Set<Int>>(emptySet())
-    private val favourites: StateFlow<Set<Int>> = _favourites
+    private val _favourites = MutableStateFlow<Set<String>>(emptySet())
+    private val favourites: StateFlow<Set<String>> = _favourites
 
     private val _isFav = MutableStateFlow(false)
     val isFav: StateFlow<Boolean> = _isFav
@@ -43,7 +41,7 @@ class LocationDetailViewModel @Inject constructor(
 
     fun loadPage() {
         viewModelScope.launch {
-            savedStateHandle.getStateFlow("location_id", -1)
+            savedStateHandle.getStateFlow("location_id", "")
                 .collectLatest { id ->
                     getFavourites(id = id)
                     fetchLocation(id = id)
@@ -51,14 +49,14 @@ class LocationDetailViewModel @Inject constructor(
         }
     }
 
-    fun addToFavourite(id: Int) {
+    fun addToFavourite(id: String) {
         viewModelScope.launch {
             store.saveId(id)
             getFavourites(id = id)
         }
     }
 
-    private fun fetchLocation(id: Int) {
+    private suspend fun fetchLocation(id: String) {
         _location.value = LocationState.Loading
 
         kawaRepository.getLocation(id = id)
@@ -73,7 +71,7 @@ class LocationDetailViewModel @Inject constructor(
             }
     }
 
-    private suspend fun getFavourites(id: Int) {
+    private suspend fun getFavourites(id: String) {
         _isFav.value = store.getFavouriteIds.first().contains(id)
         _favourites.value = store.getFavouriteIds.first()
     }

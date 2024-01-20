@@ -1,3 +1,4 @@
+/*
 package com.kawatrainingcenter.zanzibarnature.data.kawaApi.api
 
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.entity.LocationEntity
@@ -136,4 +137,4 @@ class mockData @Inject constructor() {
             ),
         )
     )
-}
+}*/

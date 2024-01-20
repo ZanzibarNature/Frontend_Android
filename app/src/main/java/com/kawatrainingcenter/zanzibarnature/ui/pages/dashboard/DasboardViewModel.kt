@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kawatrainingcenter.zanzibarnature.R
-import com.kawatrainingcenter.zanzibarnature.data.kawaApi.helper.FavouriteStore
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.store.FavouriteStore
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.repository.KawaRepository
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState

@@ -92,29 +92,6 @@ fun LocationDetail(
         }
 
         //Button with link to google maps location
-        GoogleMapsButton(url = location.location)
-    }
-}
-
-@Preview(showSystemUi = true)
-@Composable
-fun LocationDetailPreview() {
-    ZanzibarNatureTheme {
-        LocationDetail(
-            location = Location(
-                id = 2,
-                title = "Nungwi Beach",
-                description = "A very quiet beach on the outskirts of the island. Very beautiful place to enjoy the sunset.",
-                kawa = "Help to keep the beaches clean!\n" +
-                        "The Students from the Kawa Training Center often do beach clean-ups along this beach. If you want to support the Kawa Foundation in making Zanzibar a beautiful place again, feel free to contact us or make a donation.",
-                icons = listOf("hiking", "photo", "swimming"),
-                images = listOf("https://cdn-0.johnnyafrica.com/wp-content/uploads/2020/11/dsc00891.jpg"),
-                location = "",
-                coords = listOf()
-            ),
-            isFavourite = false,
-            onClickFavourite = {},
-            navigateToContribute = {}
-        )
+        GoogleMapsButton(url = location.googleMapsUrl)
     }
 }

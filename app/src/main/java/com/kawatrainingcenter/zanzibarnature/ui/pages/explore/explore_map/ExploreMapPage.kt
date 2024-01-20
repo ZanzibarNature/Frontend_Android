@@ -24,7 +24,7 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_map.compon
 fun ExploreMapPage(
     viewModel: ExploreViewModel = hiltViewModel(),
     navController: NavController,
-    onLocationClick: (Int) -> Unit
+    onLocationClick: (String) -> Unit
 ) {
     val locations by viewModel.locations.collectAsState()
 

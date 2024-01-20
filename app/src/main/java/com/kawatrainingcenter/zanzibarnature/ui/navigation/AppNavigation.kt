@@ -55,7 +55,7 @@ fun AppNavigation() {
             composable(
                 route = "location_detail/{location_id}",
                 arguments = listOf(
-                    navArgument("location_id") { type = NavType.IntType }
+                    navArgument("location_id") { type = NavType.StringType }
                 ),
             ) {
                 LocationDetailPage(

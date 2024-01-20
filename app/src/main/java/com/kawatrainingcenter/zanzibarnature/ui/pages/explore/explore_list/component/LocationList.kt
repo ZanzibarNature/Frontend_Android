@@ -13,8 +13,8 @@ import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 @Composable
 fun LocationList (
     locations: List<Location>,
-    onLocationClick: (Int) -> Unit,
-    favorites: Set<Int>
+    onLocationClick: (String) -> Unit,
+    favorites: Set<String>
 ){
     Box {
         LazyColumn (contentPadding = PaddingValues(top = 50.dp, bottom = 80.dp)) {

@@ -1,5 +1,6 @@
 plugins {
     kotlin("kapt")
+    kotlin("plugin.serialization")
     id("com.android.application")
     id("com.google.dagger.hilt.android")
     id("org.jetbrains.kotlin.android")
@@ -52,9 +53,15 @@ android {
     kapt {
         correctErrorTypes = true
     }
+
 }
 
+
+
 dependencies {
+    //serializing json
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+
     //xml cardview custom info window
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")

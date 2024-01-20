@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.kawatrainingcenter.zanzibarnature.R
-import com.kawatrainingcenter.zanzibarnature.data.kawaApi.helper.FavouriteStore
+import com.kawatrainingcenter.zanzibarnature.data.kawaApi.store.FavouriteStore
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Location
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -27,32 +27,38 @@ class ExploreViewModel @Inject constructor(
 
     private val store = FavouriteStore(context)
 
-    private val _favourites = MutableStateFlow<Set<Int>>(emptySet())
-    val favourites: StateFlow<Set<Int>> = _favourites
+    private val _favourites = MutableStateFlow<Set<String>>(emptySet())
+    val favourites: StateFlow<Set<String>> = _favourites
 
     private val locationsFetched = MutableStateFlow<List<Location>>(emptyList())
 
     private val _locations = MutableStateFlow<LocationsState>(LocationsState.Loading)
     val locations: StateFlow<LocationsState> = _locations
 
-    init { loadPage() }
+    init {
+        loadPage()
+    }
 
     fun loadPage() {
-        fetchLocations()
-        fetchFavorites()
+        viewModelScope.launch {
+            fetchLocations()
+            fetchFavorites()
+        }
+
     }
 
     fun filterLocations(sortType: String) {
-        val filteredLocations = if(sortType == "") locationsFetched.value
+        val filteredLocations = if (sortType == "") locationsFetched.value
         else {
             locationsFetched.value.filter { location ->
-            location.icons.contains(sortType) }
+                location.icons.contains(sortType)
+            }
         }
 
         _locations.value = locationsStateMapper.map(filteredLocations)
     }
 
-    private fun fetchLocations() {
+    private suspend fun fetchLocations() {
         _locations.value = LocationsState.Loading
 
         kawaRepository.getLocations()

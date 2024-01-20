@@ -15,9 +15,8 @@ class RetrofitModule {
     @Singleton
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://web-kawa-foundation-app-dev.apps.ocp6-inholland.joran-bergfeld.com/")
+            .baseUrl("https://contentmanagement-kawa-foundation-app-dev.apps.ocp6-inholland.joran-bergfeld.com/")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }
-
 }

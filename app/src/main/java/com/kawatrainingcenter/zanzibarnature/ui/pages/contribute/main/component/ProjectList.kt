@@ -21,7 +21,7 @@ fun ProjectList(
                 val item = projects[it]
                 ProjectCard(
                     project = item,
-                    onClick = { onProjectClick(item.name) }
+                    onClick = { onProjectClick(item.id) }
                 )
             }
         }
