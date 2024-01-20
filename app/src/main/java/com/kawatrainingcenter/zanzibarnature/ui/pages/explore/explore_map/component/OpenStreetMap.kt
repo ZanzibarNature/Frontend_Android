@@ -18,6 +18,7 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
+import org.osmdroid.views.overlay.infowindow.InfoWindow
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
@@ -61,14 +62,17 @@ fun updateMapView(
 ) {
     locations.forEach { location ->
         val marker = Marker(mapView)
+
         marker.infoWindow =
             CustomInfoWindow(mapView, location, context, onClick = { onClick(location.id) })
+
         marker.apply {
             position = GeoPoint(location.latitude, location.longitude)
             icon = ResourcesCompat.getDrawable(context.resources, R.drawable.pin_green, null)
             title = location.title
             setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM)
         }
+
         mapView.overlays.add(marker)
     }
     mapView.invalidate()

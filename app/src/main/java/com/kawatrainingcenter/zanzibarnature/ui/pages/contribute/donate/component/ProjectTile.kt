@@ -12,14 +12,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Project
-
 
 @Composable
 fun ProjectTile(
@@ -41,7 +42,8 @@ fun ProjectTile(
                     .fillMaxWidth()
                     .height(200.dp),
                 contentScale = ContentScale.Crop,
-                contentDescription = ""
+                contentDescription = "",
+                placeholder = painterResource(id = R.drawable.placeholder)
             )
             Column {
                 Text(

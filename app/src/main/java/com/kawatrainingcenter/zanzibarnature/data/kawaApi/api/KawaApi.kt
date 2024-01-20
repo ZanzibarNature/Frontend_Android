@@ -21,7 +21,7 @@ interface KawaApi {
         @Query("toCurrency") currency: String,
     ): Response<CompensationEntity>
 
-    @GET("api/Content/Locations/GetPage?maxPerPage=10")
+    @GET("api/Content/Locations/GetPage?maxPerPage=25")
     suspend fun getLocations(): Response<LocationsEntity>
 
     @GET("api/Content/Locations/GetByKey/Location/{id}")
@@ -29,7 +29,7 @@ interface KawaApi {
         @Path("id") id: String
     ): Response<LocationEntity>
 
-    @GET("api/Content/Articles/GetPage?maxPerPage=10")
+    @GET("api/Content/Articles/GetPage?maxPerPage=25")
     suspend fun getProjects(): Response<ProjectsEntity>
 
     @GET("api/Content/Articles/GetByKey/Project/{id}")

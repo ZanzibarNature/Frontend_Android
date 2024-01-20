@@ -40,11 +40,11 @@ class CustomInfoWindow(
         }
 
         mView.setOnClickListener {
-            onClick()
+           onClick()
         }
+
     }
-
     override fun onClose() {
-
+        this.close()
     }
 }

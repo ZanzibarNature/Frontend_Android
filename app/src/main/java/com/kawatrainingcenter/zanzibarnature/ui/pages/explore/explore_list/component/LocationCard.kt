@@ -70,7 +70,8 @@ fun LocationCard(
                         .fillMaxHeight()
                         .width(140.dp),
                     contentScale = ContentScale.Crop,
-                    contentDescription = ""
+                    contentDescription = "",
+                    placeholder = painterResource(id = R.drawable.placeholder)
                 )
 
                 if (isFavourite) {

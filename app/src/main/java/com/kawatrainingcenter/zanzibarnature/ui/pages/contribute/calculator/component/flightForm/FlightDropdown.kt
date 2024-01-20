@@ -2,9 +2,12 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.com
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
@@ -39,6 +42,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.window.PopupProperties
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.pages.contribute.calculator.model.Airport
 
@@ -58,6 +62,7 @@ fun FlightDropdown(
     val focusManager = LocalFocusManager.current
     val focusRequester = remember { FocusRequester() }
 
+    //Dropdown that searches through existing airports, when airport is clicked it is added to selectedAirport
     Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp, top = 8.dp)) {
         Text(
             text = "${type.capitalize()} ${stringResource(R.string.airport)}",
@@ -65,7 +70,7 @@ fun FlightDropdown(
         ExposedDropdownMenuBox(
             expanded = expanded,
             onExpandedChange = {
-                expanded != expanded
+                expanded = false
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -81,7 +86,8 @@ fun FlightDropdown(
                         onChange(it)
                     }
 
-                    expanded = if (text.length > 3) {
+
+                    expanded = if (text.length > 2) {
                         airports?.isNotEmpty() == true
                     } else false
                 },
@@ -101,7 +107,7 @@ fun FlightDropdown(
                     onNext = { focusManager.moveFocus(FocusDirection.Down) }
                 ),
                 placeholder = {
-                    Text(text = "${stringResource(R.string.Choose)} $type ${stringResource(R.string.airport)}")
+                    Text(text = "${stringResource(R.string.Select)} $type ${stringResource(R.string.airport)}")
                 },
                 colors = TextFieldDefaults.textFieldColors(
                     textColor = MaterialTheme.colorScheme.onTertiary,
@@ -119,18 +125,19 @@ fun FlightDropdown(
                 expanded = expanded,
                 onDismissRequest = {
                     expanded = false
-                    focusRequester.requestFocus()
                 },
+                properties = PopupProperties(focusable = false),
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .offset(y = 10.dp)
+                    .fillMaxWidth(.9f)
+                    .fillMaxHeight(.2f)
+                    .background(MaterialTheme.colorScheme.background)
             ) {
                 airports?.forEach { airport ->
                     DropdownMenuItem(
                         text = {
                             Text(
                                 text = airport.name.toString(),
-                                color = MaterialTheme.colorScheme.onTertiary,
+                                color = MaterialTheme.colorScheme.onBackground,
                                 modifier = Modifier.fillMaxWidth()
                             )
                         },
@@ -139,6 +146,7 @@ fun FlightDropdown(
                             text = airport.name.toString()
                             expanded = false
                             onClick(airport)
+                            focusManager.moveFocus(FocusDirection.Down)
                         },
                         modifier = Modifier.fillMaxWidth()
                     )

@@ -26,6 +26,7 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
+import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.data.kawaApi.model.Project
 import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 
@@ -60,7 +61,8 @@ fun ProjectCard(
                     .width(140.dp),
                 //painter = painterResource(R.drawable.beach),
                 contentScale = ContentScale.Crop,
-                contentDescription = ""
+                contentDescription = "",
+                placeholder = painterResource(id = R.drawable.placeholder)
             )
             Column {
                 Text(

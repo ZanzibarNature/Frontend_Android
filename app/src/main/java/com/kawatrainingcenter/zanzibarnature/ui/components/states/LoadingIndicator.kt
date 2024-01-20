@@ -16,7 +16,8 @@ fun LoadingIndicator(modifier: Modifier = Modifier) {
         modifier = modifier
             .fillMaxWidth()
             .fillMaxHeight()
-            .padding(8.dp),
+            .padding(8.dp)
+            .padding(top = 80.dp),
         contentAlignment = Alignment.Center
     ) {
         CircularProgressIndicator()

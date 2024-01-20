@@ -43,6 +43,9 @@
     <string name="error_text">Something went wrong...</string>
     <string name="error_message">Unknown Error</string>
 
+    Saved locations
+    <string name="no_saved_locations">You have not added any locations, go to the explore page to add locations.</string>
+
     CO2 Calculator
     <string name="return_flight">Return Flight</string>
     <string name="departing">departing</string>
@@ -52,13 +55,12 @@
     <string name="calculated_amount">"Calculated Amount: "</string>
     <string name="calculated_donation_explained">"With this amount, enough trees will be planted to offset your flight's CO₂ emissions. We're happy with every donation so please feel free to change the amount!"</string>
     <string name="airport">airport</string>
-    <string name="Choose">Choose</string>
+    <string name="Select">Select</string>
     <string name="amount_of_tickets">Amount of tickets</string>
     <string name="calculate">Calculate</string>
     <string name="co2_calculator">CO₂ Calculator</string>
     <string name="airplane_icon">Icon of airplane</string>
     <string name="calculated">calculated by CO₂ emissions</string>
-
 
     Content Descriptions
     <string name="navigate_back_description">Navigate back</string>
@@ -71,8 +73,6 @@
     <string name="unknown_error">Unknown Error\n</string>
     <string name="try_again">Please try again</string>
     <string name="close">Close</string>
-
-    New:
 
 
 </resources>

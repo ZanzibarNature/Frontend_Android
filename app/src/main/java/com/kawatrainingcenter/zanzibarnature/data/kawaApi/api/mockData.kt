@@ -122,9 +122,7 @@ class mockData @Inject constructor() {
             LocationEntity(
                 id = 6,
                 title = "Blue Bikes",
-                description = "Discover the beauty of Zanzibar and step into the world of Bluebikes.\n" +
-                        "\n" +
-                        "Explore the island of Zanzibar by bike! Book one of our tours and enjoy the nature and culture.",
+                description = "Discover the beauty of Zanzibar and step into the world of Bluebikes. Explore the island of Zanzibar by bike! Book one of our tours and enjoy the nature and culture.",
                 kawa = "Our story began with the training of four promising graduate tour guide students. These very graduates started their career by setting up this social enterprise. Not only by running the daily operations, but also sharing their knowledge and expertise to the new Kawa students, teaching them bike mechanics and practicing their tour guiding skills.",
                 images = listOf(
                     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F05%2Fe0%2F5f%2F34%2Fbike-zanzibar-private.jpg&f=1&nofb=1&ipt=761ab6f079148fcdbc5981b02c803ba77ed7a00c67cf4e0767ff8dc2833e1848&ipo=images",

@@ -2,10 +2,12 @@ package com.kawatrainingcenter.zanzibarnature.ui.pages.dashboard
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -17,6 +19,7 @@ import com.kawatrainingcenter.zanzibarnature.ui.components.AppScaffold
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.ErrorDialog
 import com.kawatrainingcenter.zanzibarnature.ui.components.states.LoadingIndicator
 import com.kawatrainingcenter.zanzibarnature.ui.components.text.HeaderText
+import com.kawatrainingcenter.zanzibarnature.ui.components.text.ParagraphText
 import com.kawatrainingcenter.zanzibarnature.ui.helper.LifeCycleHandler
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.component.LocationList
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state.LocationsState
@@ -53,6 +56,17 @@ fun DashboardPage(
                             onLocationClick = { id -> onLocationClick(id) },
                             favorites = emptySet()
                         )
+
+                        if (state.locations.isEmpty()) {
+                            ParagraphText(
+                                text = stringResource(R.string.no_saved_locations),
+                                modifier = Modifier
+                                    .align(Alignment.Center)
+                                    .fillMaxHeight()
+                                    .fillMaxHeight()
+                                    .padding(top = 80.dp, bottom = 16.dp, end= 16.dp, start = 16.dp)
+                            )
+                        }
                     }
 
                     HeaderText(

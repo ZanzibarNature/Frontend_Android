@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -25,6 +26,7 @@ import coil.compose.AsyncImage
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.rememberPagerState
+import com.kawatrainingcenter.zanzibarnature.R
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
@@ -60,7 +62,8 @@ fun ImageSlider(
                             .fillMaxWidth()
                             .fillMaxHeight(),
                         contentScale = ContentScale.Crop,
-                        contentDescription = ""
+                        contentDescription = "",
+                        placeholder = painterResource(id = R.drawable.placeholder)
                     )
                 }
             }
