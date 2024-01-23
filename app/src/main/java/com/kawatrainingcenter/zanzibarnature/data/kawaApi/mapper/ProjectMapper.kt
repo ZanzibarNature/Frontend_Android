@@ -14,7 +14,7 @@ class ProjectMapper @Inject constructor() {
     fun map(entity: ProjectEntity): Result<Project> {
         return runCatching {
 
-            //The images from the backend are a serialized string, this method below converts them into a List<String>
+            //The image from the backend is a serialized string, this method below converts it into a single url String
             val serializedImageURLs = entity.serializedImageURLs
             val imageUrls = Json.decodeFromString<ImageUrls>(serializedImageURLs)
             val image = imageUrls.BannerImage

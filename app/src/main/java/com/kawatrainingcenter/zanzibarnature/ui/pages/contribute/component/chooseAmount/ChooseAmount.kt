@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.text.HeaderText
 
+//A collection of amount buttons ranging from 1 -> 50, selecting amount calls onchange
 @Composable
 fun ChooseAmount(
     enteredAmount: Int,

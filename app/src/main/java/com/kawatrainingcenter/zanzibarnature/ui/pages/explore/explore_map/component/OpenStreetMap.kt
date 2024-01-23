@@ -60,6 +60,8 @@ fun updateMapView(
     context: Context,
     onClick: (String) -> Unit
 ) {
+
+    //Adds the markers for each location using the latitude and longitude (from backend)
     locations.forEach { location ->
         val marker = Marker(mapView)
 

@@ -15,10 +15,12 @@ class FavouriteStore(private val context: Context) {
         private val FAV_LIST = stringSetPreferencesKey("fav_list")
     }
 
+    //Gets a list of all the favourite locations Ids
     val getFavouriteIds: Flow<Set<String>> = context.dataStore.data.map { preferences ->
         preferences[FAV_LIST]?.map { it }?.toSet() ?: setOf()
     }
 
+    //Saves the Id of a favourite location into a Set<String>
     suspend fun saveId(id: String) {
         context.dataStore.edit { preferences ->
             val ids = preferences[FAV_LIST]?.toMutableSet() ?: mutableSetOf()

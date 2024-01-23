@@ -99,6 +99,7 @@ fun LocationCard(
                     )
                 )
 
+                //Displays all the activities as icons belonging to this location
                 Row(modifier = Modifier.padding(start = 4.dp)) {
                     activities.icons.forEach { icon ->
                         if (location.icons.contains(icon.name)) {

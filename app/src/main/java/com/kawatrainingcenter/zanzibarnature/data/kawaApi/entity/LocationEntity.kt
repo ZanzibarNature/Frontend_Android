@@ -18,17 +18,3 @@ data class LocationsEntity (
     val item2: List<LocationEntity>
 )
 
-//data class LocationEntity (
-//    val id: Int,
-//    val title: String,
-//    val description: String,
-//    val kawa: String?,
-//    val images: List<String>,
-//    val icons: List<String>,
-//    val location: String,
-//    val coords: List<Double>
-//)
-//
-//data class LocationsEntity (
-//    val locations: List<LocationEntity>
-//)

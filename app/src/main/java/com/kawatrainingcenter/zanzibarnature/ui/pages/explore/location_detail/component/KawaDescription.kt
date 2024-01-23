@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 
+//A special highlighted section displaying Kawa's involvement, with a button that navigates to the contribute page
 @Composable
 fun KawaDescription(
     description: String,

@@ -42,7 +42,7 @@ import com.kawatrainingcenter.zanzibarnature.ui.helper.customShadow
 import java.text.NumberFormat
 import java.util.Locale
 
-
+//The user can enter it's own amount using this button/ textfield
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EnterAmountBtn(

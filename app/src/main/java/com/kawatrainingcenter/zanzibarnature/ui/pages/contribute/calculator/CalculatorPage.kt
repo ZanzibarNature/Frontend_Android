@@ -101,6 +101,7 @@ fun CalculatorPage(
                     }
                 }
 
+                //On pressing Retry the compensationState is set back to "notClicked" so the user can fill in the form again.
                 is CompensationState.Error -> ErrorDialog(
                     message = state.message,
                     retry = { viewModel.setCompensationState() }

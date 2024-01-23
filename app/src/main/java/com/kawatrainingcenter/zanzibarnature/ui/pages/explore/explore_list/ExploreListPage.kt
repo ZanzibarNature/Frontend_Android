@@ -82,6 +82,7 @@ fun ExploreListPage(
                     }
                 }
 
+                //On retry the page is loaded again
                 is LocationsState.Error -> ErrorDialog(
                     message = state.message,
                     retry = { viewModel.loadPage() }

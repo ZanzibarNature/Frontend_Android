@@ -12,7 +12,7 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
-
+//Made a custom shadow because the shadow modifier didn't have many options
 @Composable
 fun Modifier.customShadow(
     color: Color = Color.Black,

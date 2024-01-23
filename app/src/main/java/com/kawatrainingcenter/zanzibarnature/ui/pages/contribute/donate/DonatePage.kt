@@ -82,6 +82,7 @@ fun DonatePage(
                     }
                 }
 
+                //On retry the page is loaded again
                 is ProjectState.Error -> ErrorDialog(
                     message = state.message,
                     retry = { viewModel.loadPage() })

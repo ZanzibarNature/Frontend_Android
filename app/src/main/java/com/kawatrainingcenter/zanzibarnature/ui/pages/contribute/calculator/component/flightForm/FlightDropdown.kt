@@ -62,7 +62,7 @@ fun FlightDropdown(
     val focusManager = LocalFocusManager.current
     val focusRequester = remember { FocusRequester() }
 
-    //Dropdown that searches through existing airports, when airport is clicked it is added to selectedAirport
+    //Dropdown that searches through existing airports, when airport is clicked it is added to selectedAirport (sorry very long)
     Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp, bottom = 4.dp, top = 8.dp)) {
         Text(
             text = "${type.capitalize()} ${stringResource(R.string.airport)}",

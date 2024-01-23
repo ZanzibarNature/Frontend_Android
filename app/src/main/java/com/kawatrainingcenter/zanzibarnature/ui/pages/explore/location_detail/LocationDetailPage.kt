@@ -49,6 +49,7 @@ fun LocationDetailPage(
 
                 }
 
+                //On retry the page is loaded again
                 is LocationState.Error -> ErrorDialog(
                     message = state.message,
                     retry = { viewModel.loadPage() }

@@ -14,7 +14,6 @@ import java.util.Locale
 fun DonateButton(
     amount: Int
 ) {
-    //val uriHandler = LocalUriHandler.current
     val context = LocalContext.current
 
     //FormatNumber function for readability, puts '.' between long numbers, for example: 100000 -> 100.000

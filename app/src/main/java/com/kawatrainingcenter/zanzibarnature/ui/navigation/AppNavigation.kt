@@ -1,14 +1,7 @@
 package com.kawatrainingcenter.zanzibarnature.ui.navigation
 
-import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
-import androidx.compose.animation.core.EaseIn
-import androidx.compose.animation.core.EaseOut
-import androidx.compose.animation.core.LinearEasing
-import androidx.compose.animation.core.tween
-import androidx.compose.animation.fadeIn
-import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -24,7 +17,6 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.dashboard.DashboardPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.ExploreListPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_map.ExploreMapPage
 import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.LocationDetailPage
-import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.location_detail.component.LocationDetail
 
 @Composable
 fun AppNavigation() {

@@ -20,7 +20,6 @@ class KawaRepository @Inject constructor(
     private val locationMapper: LocationMapper,
     private val projectMapper: ProjectMapper,
     private val compensationMapper: CompensationMapper,
-    //private val mockData: mockData
 ) {
     suspend fun getCompensation(
         from: Airport,

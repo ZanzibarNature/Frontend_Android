@@ -51,6 +51,7 @@ fun ContributePage(
                     )
                 }
 
+                //On retry the page is loaded again
                 is ProjectsState.Error -> ErrorDialog(
                     message = state.message,
                     retry = { viewModel.loadPage() })

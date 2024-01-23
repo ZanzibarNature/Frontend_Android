@@ -26,12 +26,13 @@ import com.kawatrainingcenter.zanzibarnature.ui.pages.explore.explore_list.state
 
 @Composable
 fun DashboardPage(
-    viewModel: DasboardViewModel = hiltViewModel(),
+    viewModel: DashboardViewModel = hiltViewModel(),
     navController: NavController,
     onLocationClick: (String) -> Unit
 ) {
     val locations by viewModel.locations.collectAsState()
 
+    //When this page appears (again) reloadFavourites() is called to display the recently added or removed favourites correctly
     LifeCycleHandler { _, event ->
         when (event) {
             Lifecycle.Event.ON_RESUME -> {
@@ -75,6 +76,7 @@ fun DashboardPage(
                     )
                 }
 
+                //On retry the page is loaded again
                 is LocationsState.Error -> ErrorDialog(
                     message = state.message,
                     retry = { viewModel.loadPage() }

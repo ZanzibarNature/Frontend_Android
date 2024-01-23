@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class DasboardViewModel @Inject constructor(
+class DashboardViewModel @Inject constructor(
     @ApplicationContext private val context: Context,
     private val kawaRepository: KawaRepository,
     private val locationsStateMapper: LocationsStateMapper

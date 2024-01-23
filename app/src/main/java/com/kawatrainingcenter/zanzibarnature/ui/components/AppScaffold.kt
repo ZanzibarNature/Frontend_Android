@@ -156,15 +156,6 @@ fun AppScaffoldTopBarNavigation(
     navigation: NavigationType?
 ) {
     when (navigation) {
-//        is NavigationType.Top -> {
-//            IconButton(navigation.onClick) {
-//                Icon(
-//                    painter = painterResource(R.drawable.ic_home),
-//                    contentDescription = stringResource(R.string.navigate_up_description),
-//                    tint = MaterialTheme.colorScheme.onPrimary
-//                )
-//            }
-//        }
 
         is NavigationType.Back -> {
             IconButton(navigation.onClick) {

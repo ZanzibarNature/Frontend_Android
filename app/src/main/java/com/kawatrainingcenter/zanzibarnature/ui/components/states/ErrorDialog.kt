@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import com.kawatrainingcenter.zanzibarnature.R
 import com.kawatrainingcenter.zanzibarnature.ui.components.text.SmallHeaderText
 
+//Error pop up, with retry button.
 @Composable
 fun ErrorDialog(
     modifier: Modifier = Modifier,
